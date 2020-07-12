@@ -5,7 +5,7 @@
 
     <xacro:property name="PI" value="3.14159"/>
     
-    <!-- Included URDF/XACROS Files -->
+    <!-- Included URDF/XACRO Files -->
     <xacro:include filename="$(find i3e-d3_description)/urdf/wheel.urdf.xacro"/>
     
     <!-- Base size -->
@@ -16,7 +16,12 @@
     <!-- Wheel Dimensions -->
     <xacro:property name="wheel_length" value="0.06"/>
     <xacro:property name="wheel_radius" value="0.065"/>
-    
+    <!-- Wheel Mounting Positions -->
+    <!-- Need to adjust offsets -->
+    <xacro:property name="wheel_x_offset" value="0.155"/>
+    <xacro:property name="wheel_y_offset" value="${wheel_length/2 + 0.13}"/>
+    <xacro:property name="wheel_z_offset" value="0.0"/>
+
     <!-- Base link is the center of the robot -->
     <link name="base_link">
         <visual>
@@ -28,20 +33,54 @@
                 <color rgba="0.0 0.0 1.0 1.0"/>
             </material>
         </visual>
-
-        <collision>
+        <collision> 
+            <!-- Need to adjust collision origin -->
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="0.0 0.0 0.0"/>
+                <box size="${base_x_size} ${base_y_size} ${base_z_size}"/>
             </geometry>
         </collision>
     </link>
 
+    <!-- Base footprint link is on the ground under the robot-->
+    <link name="base_footprint"/>
+    <joint name="base_footprint_joint" type="fixed">
+        <origin xyz="0.0 ${wheel_vertical_offset - wheel_radius} " rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="base_footprint_link"/>
+    </joint>    
+    
+    <!-- Base inertial link -->
+    <link name="inertial_link">
+        <inertial>
+            <!-- Need to adjust all inertia matrix -->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="3.0"/>
+            <inertia ixx="0.6" ixy="-0.023" ixz="-0.12" iyy="1.73" iyz="-0.0015" izz="2.02"/>
+        </inertial>    
+    </link>
 
+    <joint name="inertial_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="inertial_link"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+    
     <!-- I3E-D3 wheel macros -->
+    <xacro:i3e-d3_wheel prefix="front_left">
+        <origin xyz="${wheel_x_offset} ${wheel_y_offset} ${wheel_z_offset}" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_wheel>
+    <xacro:i3e-d3_wheel prefix="front_right">
+        <origin xyz="${wheel_x_offset} ${-wheel_y_offset} ${wheel_z_offset}" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_wheel>
+    <xacro:i3e-d3_wheel prefix="rear_left">
+        <origin xyz="${-wheel_x_offset} ${wheel_y_offset} ${wheel_z_offset}" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_wheel>
+    <xacro:i3e-d3_wheel prefix="rear_right">
+        <origin xyz="${-wheel_x_offset} ${-wheel_y_offset} ${wheel_z_offset}" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_wheel>
 
-
-
+    <!-- Gazebo ROS Control Plugin -->
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
             <robotNamespace>$(arg robot_namespace)</robotNamespace>
