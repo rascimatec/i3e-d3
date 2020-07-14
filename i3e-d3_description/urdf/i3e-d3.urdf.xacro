@@ -14,8 +14,8 @@
     <xacro:property name="base_z_size" value="0.085"/>
     
     <!-- Wheel Dimensions -->
-    <xacro:property name="wheel_length" value="0.06"/>
-    <xacro:property name="wheel_radius" value="0.065"/>
+    <xacro:property name="wheel_length" value="0.035"/>
+    <xacro:property name="wheel_radius" value="0.04"/>
     <!-- Wheel Mounting Positions -->
     <!-- Need to adjust offsets -->
     <xacro:property name="wheel_x_offset" value="0.11"/>
