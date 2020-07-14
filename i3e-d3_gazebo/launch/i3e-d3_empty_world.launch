@@ -11,6 +11,7 @@
         <arg name="debug" value="false"/>
     </include>
 
+    <!-- Spawn robot -->
     <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch"/>
 
 </launch>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Load controller configuration -->
+    <rosparam command="load" file="$(find i3e-d3_control)/config/control.yaml"/>
+    
+    <!-- Spawn controllers -->
+    <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
+          args="i3e_d3_velocity_controller" respawn="false"/>
+
+</launch>
