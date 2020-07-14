@@ -8,4 +8,10 @@
     <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
           args="i3e_d3_velocity_controller" respawn="false"/>
 
+    <!-- Twist Multiplexer -->
+    <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+        <rosparam file="$(find i3e-d3_control)/config/twist_mux.yaml" command="load"/>
+        <remap from="cmd_vel_out" to="i3e_d3_velocity_controller/cmd_vel"/>        
+    </node>
+
 </launch>

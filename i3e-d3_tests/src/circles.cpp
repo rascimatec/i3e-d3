@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     
     geometry_msgs::Twist vel;
     vel.linear.x = 0.7;
-    vel.angular.z = 1.2;
+    vel.angular.z = 0.5;
 
     ros::Rate loop_rate(10);
     while (ros::ok())

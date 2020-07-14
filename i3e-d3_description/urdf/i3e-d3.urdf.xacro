@@ -55,8 +55,8 @@
         <inertial>
             <!-- Need to adjust all inertia matrix -->
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="3.0"/>
-            <inertia ixx="0.6" ixy="-0.023" ixz="-0.12" iyy="1.73" iyz="-0.0015" izz="2.02"/>
+            <mass value="7.824"/>
+            <inertia ixx="0.04546" ixy="0.0" ixz="0.0" iyy="0.08458" iyz="0.0" izz="0.1206"/>
         </inertial>    
     </link>
 
