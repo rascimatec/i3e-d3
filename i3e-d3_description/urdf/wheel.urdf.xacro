@@ -26,12 +26,12 @@
         </link>
 
     <!-- Need to adjust gazebo properties -->
-    <gazebo reference="{prefix}_wheel_link">
-        <mu1 value="10.0"/>
-        <mu2 value="10.0"/>
-        <kp value="10.0"/>
-        <kd value="10.0"/>
-        <fdir1 value="10 0 0"/>
+    <gazebo reference="${prefix}_wheel_link">
+        <mu1 value="1.0"/>
+        <mu2 value="1.0"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <fdir1 value="1 0 0"/>
     </gazebo>
 
     <joint name="${prefix}_wheel" type="continuous">
