@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+    <rosparam file="$(find i3e-d3_control)/config/teleop_joy.yaml" command="load"/>
+
+    <arg name="joystick" default="true" />
+    <arg name="joy_dev" default="/dev/input/js0"/>
+
+    <group ns="joy_teleop">
+        <node pkg="joy" type="joy_node" name="joy_node"/>
+        <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy"/>
+    </group>
+
+</launch>

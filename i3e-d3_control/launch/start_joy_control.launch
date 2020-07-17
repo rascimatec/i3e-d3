@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
 <launch>
+    <!-- Joy node -->
+    <node pkg="joy" type="joy_node" name="i3e_d3_joy" respawn="true">
+        <param name="dev" type="string" value="/dev/input/js0"/>
+        <param name="deadzone" value="0.12"/>
+    </node>
 
-    <rosparam file="$(find i3e-d3_control)/config/teleop_joy.yaml" command="load"/>
-
-    <arg name="joystick" default="true" />
-    <arg name="joy_dev" default="/dev/input/js0"/>
-
-    <group ns="joy_teleop">
-        <node pkg="joy" type="joy_node" name="joy_node"/>
-        <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy"/>
-    </group>
-
+    <!-- Axes -->
+    <param name="axis_linear" value="1" type="int"/>
+    <param name="axis_angular" value="0" type="int"/>
+    <param name="scale_linear" value="2" type="double"/>
+    <param name="scale_angular" value="2" type="double"/>
+    <node pkg="i3e-d3_control" type="joy_teleop" name="teleop"/>
+    
 </launch>
