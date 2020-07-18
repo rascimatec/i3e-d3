@@ -16,9 +16,6 @@
                 <geometry>
                     <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
                 </geometry>
-                <material name="green">
-                    <color rgba="0.0 1.0 0.0 1.0"/>
-                </material>
             </visual>
             <collision>
                 <origin xyz="0.0 0.0 0.0" rpy="${PI/2} 0.0 0.0"/>
@@ -28,32 +25,32 @@
             </collision>
         </link>
 
-    <!-- Need to adjust gazebo properties -->
-    <gazebo reference="${prefix}_wheel_link">
-        <material>Gazebo/DarkGrey</material>
-        <mu1 value="0.5"/>
-        <mu2 value="0.5"/>
-        <kp value="10000000.0" />
-        <kd value="1" />
-        <fdir1 value="1 0 0"/>
-    </gazebo>
+        <!-- Need to adjust gazebo properties -->
+        <gazebo reference="${prefix}_wheel_link">
+            <material>Gazebo/DarkGrey</material>
+            <mu1 value="0.5"/>
+            <mu2 value="0.5"/>
+            <kp value="10000000.0" />
+            <kd value="1" />
+            <fdir1 value="1 0 0"/>
+        </gazebo>
 
-    <joint name="${prefix}_wheel" type="continuous">
-        <xacro:insert_block name="joint_pose"/>
-        <parent link="base_link"/>
-        <child link="${prefix}_wheel_link"/>
-        <axis xyz="0 1 0" rpy="0.0 0.0 0.0"/>
-    </joint>
-
-    <transmission name="${prefix}_wheel_trans" type="SimpleTransmission">
-        <type>transmission_interface/SimpleTransmission</type>
-        <actuator name="${prefix}_wheel_motor">
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-        <joint name="${prefix}_wheel">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        <joint name="${prefix}_wheel" type="continuous">
+            <xacro:insert_block name="joint_pose"/>
+            <parent link="base_link"/>
+            <child link="${prefix}_wheel_link"/>
+            <axis xyz="0 1 0" rpy="0.0 0.0 0.0"/>
         </joint>
-    </transmission>
+
+        <transmission name="${prefix}_wheel_trans" type="SimpleTransmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <actuator name="${prefix}_wheel_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+            <joint name="${prefix}_wheel">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            </joint>
+        </transmission>
 
     </xacro:macro>    
 </robot>

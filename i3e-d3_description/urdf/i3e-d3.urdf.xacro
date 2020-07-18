@@ -7,6 +7,7 @@
     
     <!-- Included URDF/XACRO Files -->
     <xacro:include filename="$(find i3e-d3_description)/urdf/wheel.urdf.xacro"/>
+    <xacro:include filename="$(find i3e-d3_description)/urdf/accessories.urdf.xacro"/>
     
     <!-- Base size -->
     <xacro:property name="base_x_size" value="0.35"/>
@@ -84,10 +85,12 @@
         <origin xyz="${-wheel_x_offset} ${-wheel_y_offset} ${wheel_z_offset}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_wheel>
 
+    <!-- Sensors -->
+    <xacro:i3e-d3_lidar>
+        <origin xyz="0.047 0.0 ${base_z_size/2 + lidar_length/2}" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_lidar>
 
-    <gazebo reference="base_link">
-        <material>Gazebo/Yellow</material>
-    </gazebo>
+    <gazebo reference="base_link"><material>Gazebo/Yellow</material></gazebo>
 
     <!-- Gazebo ROS Control Plugin -->
     <gazebo>

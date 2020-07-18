@@ -4,8 +4,18 @@
   ],
   "ros.distro": "melodic",
   "cSpell.words": [
+    "controller",
     "fdir",
+    "gazebo",
+    "gazebo ros head hokuyo controller",
+    "head",
+    "hokuyo",
     "horiz",
-    "rgba"
+    "rgba",
+    "ros"
+  ],
+  "cSpell.ignoreWords": [
+    "irobotix",
+    "stddev"
   ]
 }
