@@ -89,6 +89,9 @@
     <xacro:i3e-d3_lidar>
         <origin xyz="0.047 0.0 ${base_z_size/2 + lidar_length/2}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_lidar>
+    <xacro:i3e-d3_camera>
+        <origin xyz="0.047 0.0 ${base_z_size/2 + lidar_length + camera_box_size/2}" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_camera>
 
     <gazebo reference="base_link"><material>Gazebo/Yellow</material></gazebo>
 
