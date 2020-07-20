@@ -16,6 +16,12 @@
   ],
   "cSpell.ignoreWords": [
     "irobotix",
-    "stddev"
+    "max",
+    "max urange",
+    "resample",
+    "resample threshold",
+    "stddev",
+    "threshold",
+    "urange"
   ]
 }

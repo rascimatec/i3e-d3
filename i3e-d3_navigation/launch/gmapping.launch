@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="scan_topic" default="/i3e_d3/laser/scan"/>
+
+    <!-- Defining parameters for slam_gmapping node -->
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+        <rosparam command="load" file="$(find i3e-d3_navigation)/config/gmapping_config.yaml"/>
+        <remap from="scan" to="$(arg scan_topic)"/>
+    </node>
+
+</launch>
