@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="i3e-d3_accessories">
 
-    <xacro:property name="lidar_radius" value="0.055"/>
-    <xacro:property name="lidar_length" value="0.05"/>
-    <xacro:property name="camera_box_size" value="0.035"/>
+    <xacro:property name="camera_box_size" value="0.02"/>
     <arg name="robot_namespace" default="/"/>
     
     <!-- 3irobotix LIDAR -->
@@ -17,7 +15,7 @@
             <visual>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <geometry>
-                    <cylinder radius="${lidar_radius}" length="${lidar_length}"/>
+                    <mesh filename="package://i3e-d3_description/meshes/lidar.stl"/>
                 </geometry>
             </visual>
         </link>

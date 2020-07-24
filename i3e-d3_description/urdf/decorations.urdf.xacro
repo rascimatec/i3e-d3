@@ -1,4 +1,31 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="i3e-d3_decorations">
-    <!-- To Do-->
+    <xacro:macro name="i3e-d3_decorate">
+
+        <link name="display_link">
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.05386 0.09604 0.005"/>
+                </geometry>
+            </visual>
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.141"/>
+                <inertia 
+                    ixx="1e-6" ixy="0.0" ixz="0.0" 
+                    iyy="1e-6" iyz="0.0" 
+                    izz="1e-6"/>
+            </inertial>
+        </link>
+
+        <joint name="display_joint" type="fixed">
+            <origin xyz="0.15 0.0 0.028" rpy="0.0 ${28.74*PI/180} 0.0"/>
+            <parent link="base_link"/>
+            <child link="display_link"/>
+        </joint>
+
+        <gazebo reference="display_link"><material>Gazebo/White</material></gazebo>
+
+    </xacro:macro>
 </robot>
