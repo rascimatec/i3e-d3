@@ -5,10 +5,9 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /TF1
         - /TF1/Frames1
-        - /Odometry1
         - /Odometry1/Shape1
+        - /Map1
       Splitter Ratio: 0.5
     Tree Height: 494
   - Class: rviz/Selection
@@ -98,6 +97,7 @@ Visualization Manager:
       Visibility:
         Grid: true
         LaserScan: true
+        Map: true
         Odometry: true
         RobotModel: true
         TF: true
@@ -132,6 +132,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        display_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         front_left_wheel_link:
           Alpha: 1
           Show Axes: false
@@ -152,6 +157,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         rear_right_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        support_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -163,60 +173,19 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
-        3irobotix_lidar:
-          Value: true
         All Enabled: false
-        base_footprint:
-          Value: true
-        base_link:
-          Value: true
-        camera_link:
-          Value: true
-        front_left_wheel_link:
-          Value: true
-        front_right_wheel_link:
-          Value: true
-        inertial_link:
-          Value: true
-        map:
-          Value: true
-        odom:
-          Value: false
-        rear_left_wheel_link:
-          Value: true
-        rear_right_wheel_link:
-          Value: true
       Marker Scale: 0.4000000059604645
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          {}
-        odom:
-          base_link:
-            3irobotix_lidar:
-              {}
-            base_footprint:
-              {}
-            camera_link:
-              {}
-            front_left_wheel_link:
-              {}
-            front_right_wheel_link:
-              {}
-            inertial_link:
-              {}
-            rear_left_wheel_link:
-              {}
-            rear_right_wheel_link:
-              {}
+        {}
       Update Interval: 0
-      Value: true
+      Value: false
     - Angle Tolerance: 0.10000000149011612
       Class: rviz/Odometry
       Covariance:
@@ -251,6 +220,16 @@ Visualization Manager:
       Topic: /i3e_d3_velocity_controller/odom
       Unreliable: false
       Value: false
+    - Alpha: 0.699999988079071
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -279,25 +258,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.6623027324676514
+      Distance: 7.22873592376709
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.3846469819545746
-        Y: 0.21534022688865662
-        Z: 0.15608517825603485
+        X: 1.293683409690857
+        Y: 0.6126481890678406
+        Z: 0.31950706243515015
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6647963523864746
+      Pitch: 0.5097963809967041
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.994955539703369
+      Yaw: 3.5499556064605713
     Saved: ~
 Window Geometry:
   Camera:

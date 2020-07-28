@@ -119,7 +119,7 @@
 
     <!-- Sensors -->
     <xacro:i3e-d3_lidar>
-        <origin xyz="0.029 0.0 ${base_z_size/2}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.029 0.0 ${base_z_size/2 + 0.025}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_lidar>
     <xacro:i3e-d3_camera>
         <origin xyz="-0.026 0.0 ${base_z_size/2 + camera_box_size + 0.025}" rpy="0.0 0.0 0.0"/>

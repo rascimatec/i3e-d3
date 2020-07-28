@@ -13,7 +13,7 @@
                 <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
             </inertial>
             <visual>
-                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <origin xyz="0.0 0.0 -0.025" rpy="0.0 0.0 0.0"/>
                 <geometry>
                     <mesh filename="package://i3e-d3_description/meshes/lidar.stl"/>
                 </geometry>
@@ -45,7 +45,7 @@
                 </scan>
                 <range>
                   <min>0.10</min>
-                  <max>4.0</max>
+                  <max>6.5</max>
                   <resolution>0.01</resolution>
                 </range>
                 <noise>
