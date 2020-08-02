@@ -2,6 +2,6 @@
 <launch>
     <include file="$(find i3e-d3_gazebo)/launch/i3e-d3_playpen.launch"/>
     <include file="$(find i3e-d3_control)/launch/start_joy_control.launch"/>
-    <include file="$(find i3e-d3_viz)/launch/view_robot.launch"/>
-    <include file="$(find i3e-d3_navigation)/launch/hector_mapping.launch"/>
-</launch>
+    <!--include file="$(find i3e-d3_viz)/launch/view_robot.launch"/-->
+    <include file="$(find i3e-d3_navigation)/launch/tutorial.launch"/>
+</launch> 
