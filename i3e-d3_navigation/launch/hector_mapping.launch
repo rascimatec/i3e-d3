@@ -14,7 +14,7 @@
     <!-- Frame names -->
     <param name="map_frame" value="map" />
     <param name="base_frame" value="$(arg base_frame)" />
-    <param name="odom_frame" value="$(arg odom_frame)" />
+    <param name="odom_frame" value="$(arg base_frame)" />
     
     <!-- Tf use -->
     <param name="use_tf_scan_transformation" value="true"/>
