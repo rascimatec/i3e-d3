@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/shape_manipulator.urdf.xacro'" />
+    
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="0"/>
+    
+    <node name="i3e_d3_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description -model shape_manipulator -x $(arg x) -y $(arg y) -z $(arg z)" />
+          
+    <!-- Include control launch -->
+    <!--include file="$(find i3e-d3_control)/launch/start_control.launch"/-->
+
+</launch>
