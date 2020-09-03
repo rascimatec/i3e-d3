@@ -8,7 +8,7 @@
             <inertial>
                 <!-- Need to adjust inertia matrix -->
                 <origin xyz="0.0 0.0 0.0"/>
-                <mass value="0.160"/>
+                <mass value="1.1"/>
                 <inertia
                   ixx="2.70474e-4" ixy="0.0" ixz="0.0"
                   iyy="4.38099e-4" iyz="0.0"

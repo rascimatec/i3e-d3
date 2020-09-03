@@ -20,8 +20,8 @@
         </link>
 
         <joint name="display_joint" type="fixed">
-            <origin xyz="0.16 0.0 0.019" rpy="0.0 ${40*PI/180} 0.0"/>
-            <parent link="base_link"/>
+            <origin xyz="0.062 0.0 0.054" rpy="0.0 ${53*PI/180} 0.0"/>
+            <parent link="head"/>
             <child link="display_link"/>
         </joint>
 

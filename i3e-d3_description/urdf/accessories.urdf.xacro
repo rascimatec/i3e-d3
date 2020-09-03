@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="i3e-d3_accessories">
 
-    <xacro:property name="camera_box_size" value="0.02"/>
+    <xacro:property name="camera_box_size" value="0.04"/>
     <arg name="robot_namespace" default="/"/>
     
     <!-- 3irobotix LIDAR -->
@@ -32,7 +32,7 @@
         <gazebo reference="3irobotix_lidar">
             <sensor type="ray" name="lidar_sensor">
               <pose>0 0 0 0 0 0</pose>
-              <visualize>false</visualize>
+              <visualize>true</visualize>
               <update_rate>40</update_rate>
               <ray>
                 <scan>
@@ -45,7 +45,7 @@
                 </scan>
                 <range>
                   <min>0.10</min>
-                  <max>6.5</max>
+                  <max>8.0</max>
                   <resolution>0.01</resolution>
                 </range>
                 <noise>
