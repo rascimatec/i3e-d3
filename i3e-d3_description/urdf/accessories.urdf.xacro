@@ -32,7 +32,7 @@
         <gazebo reference="3irobotix_lidar">
             <sensor type="ray" name="lidar_sensor">
               <pose>0 0 0 0 0 0</pose>
-              <visualize>true</visualize>
+              <visualize>false</visualize>
               <update_rate>40</update_rate>
               <ray>
                 <scan>
@@ -140,6 +140,40 @@
           </sensor>
         </gazebo>
         
+    </xacro:macro>
+
+    <!-- IMU -->
+    <xacro:macro name="i3e-d3_imu" params="*joint_pose">
+        <link name="imu_link"/>
+
+        <joint name="imu_joint" type="fixed">
+            <parent link="base_link"/>
+            <child link="imu_link"/>
+            <xacro:insert_block name="joint_pose"/>
+        </joint>
+        
+        <!-- IMU plugin -->
+        <gazebo reference="imu_link">
+          <gravity>true</gravity>
+          <sensor name="imu_sensor" type="imu">
+            <always_on>true</always_on>
+            <update_rate>100</update_rate>
+            <visualize>true</visualize>
+            <topic>__default_topic__</topic>
+            <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+              <topicName>imu/data</topicName>
+              <bodyName>imu_link</bodyName>
+              <updateRateHZ>10.0</updateRateHZ>
+              <gaussianNoise>0.0</gaussianNoise>
+              <xyzOffset>0 0 0</xyzOffset>
+              <rpyOffset>0 0 0</rpyOffset>
+              <frameName>imu_link</frameName>
+              <initialOrientationAsReference>false</initialOrientationAsReference>
+            </plugin>
+            <pose>0 0 0 0 0 0</pose>
+          </sensor>
+        </gazebo>
+  
     </xacro:macro>
 
 </robot>

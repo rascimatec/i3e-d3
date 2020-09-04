@@ -178,6 +178,9 @@
     <xacro:i3e-d3_camera>
         <origin xyz="0.1 0.0 0.22" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_camera>
+    <xacro:i3e-d3_imu>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_imu>
 
     <gazebo reference="base_link"><material>Gazebo/Yellow</material></gazebo>
     <gazebo reference="neck"><material>Gazebo/DarkGrey</material></gazebo>
