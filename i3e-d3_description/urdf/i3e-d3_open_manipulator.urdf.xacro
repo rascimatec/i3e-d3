@@ -12,7 +12,7 @@
   <joint name="manipulator_fixed" type="fixed">
     <parent link="base_link"/>
     <child link="link1"/>
-    <origin xyz="-0.095 0.0 -0.03" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 -0.2 0.25" rpy="0.0 ${PI} ${PI}"/>
   </joint>
 
 </robot>

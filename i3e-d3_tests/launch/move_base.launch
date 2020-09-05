@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-    <include file="$(find i3e-d3_gazebo)/launch/i3e-d3_playpen.launch"/>
+    <include file="$(find i3e-d3_gazebo)/launch/i3e-d3_jackal_world.launch"/>
     <include file="$(find i3e-d3_viz)/launch/view_robot.launch"/>
-    <!--include file="$(find i3e-d3_navigation)/launch/amcl.launch"/-->
     <include file="$(find i3e-d3_navigation)/launch/gmapping.launch"/>
     <include file="$(find i3e-d3_navigation)/launch/move_base.launch"/>
-</launch> 
+</launch>

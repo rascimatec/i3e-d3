@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="world_name" default="worlds/empty.world"/>
-
+    <arg name="world_name" default="worlds/empty_world.world"/>
+    
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(arg world_name)"/>
         <arg name="paused" value="false"/>
@@ -11,7 +11,6 @@
         <arg name="debug" value="false"/>
     </include>
 
-    <!-- Spawn robot -->
     <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch"/>
-
+    
 </launch>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
     <include file="$(find i3e-d3_gazebo)/launch/i3e-d3_empty_world.launch">
-        <arg name="world_name" value="$(find i3e-d3_gazebo)/worlds/clearpath_playpen.world"/>
+        <arg name="world_name" value="$(find i3e-d3_gazebo)/worlds/jackal_race.world"/>
     </include>
 </launch>
