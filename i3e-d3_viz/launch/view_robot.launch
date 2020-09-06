@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find i3e-d3_viz)/rviz/i3e_d3.rviz" output="screen"/>
+  <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/i3e_d3.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" output="screen"/>
 </launch>

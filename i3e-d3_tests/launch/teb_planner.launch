@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find i3e-d3_gazebo)/launch/i3e-d3_playpen.launch"/>
+    <include file="$(find i3e-d3_navigation)/launch/teb_planner.launch"/>
+    <include file="$(find i3e-d3_viz)/launch/view_robot.launch">
+        <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/teb.rviz"/>
+    </include>
+</launch>

@@ -6,9 +6,8 @@ Panels:
       Expanded:
         - /Global Options1
         - /TF1/Frames1
-        - /Mapping1
-        - /Planning1
-      Splitter Ratio: 0.5
+        - /Sensoring1/Odometry1/Shape1
+      Splitter Ratio: 0.4522612988948822
     Tree Height: 391
   - Class: rviz/Selection
     Name: Selection
@@ -74,6 +73,7 @@ Visualization Manager:
         Planning:
           Global Plan: true
           Local Plan: true
+          PoseArray: true
           Value: true
         PoseArray: true
         RobotModel: true
@@ -171,12 +171,12 @@ Visualization Manager:
         {}
       Update Interval: 0
       Value: false
-    - Alpha: 1
-      Arrow Length: 0.30000001192092896
+    - Alpha: 0.20000000298023224
+      Arrow Length: 0.20000000298023224
       Axes Length: 0.30000001192092896
       Axes Radius: 0.009999999776482582
       Class: rviz/PoseArray
-      Color: 255; 25; 0
+      Color: 100; 150; 150
       Enabled: true
       Head Length: 0.07000000029802322
       Head Radius: 0.029999999329447746
@@ -206,7 +206,7 @@ Visualization Manager:
               Scale: 1
               Value: true
             Value: false
-          Enabled: true
+          Enabled: false
           Keep: 100
           Name: Odometry
           Position Tolerance: 0.10000000149011612
@@ -214,7 +214,7 @@ Visualization Manager:
             Alpha: 0.6000000238418579
             Axes Length: 0.3199999928474426
             Axes Radius: 0.029999999329447746
-            Color: 255; 25; 0
+            Color: 0; 25; 255
             Head Length: 0.10000000149011612
             Head Radius: 0.05000000074505806
             Shaft Length: 0.4000000059604645
@@ -222,7 +222,7 @@ Visualization Manager:
             Value: Arrow
           Topic: /odometry/filtered
           Unreliable: false
-          Value: true
+          Value: false
         - Alpha: 1
           Autocompute Intensity Bounds: false
           Autocompute Value Bounds:
@@ -271,12 +271,12 @@ Visualization Manager:
           Class: rviz/Map
           Color Scheme: map
           Draw Behind: true
-          Enabled: false
+          Enabled: true
           Name: Global Costmap
           Topic: /move_base/global_costmap/costmap
           Unreliable: false
           Use Timestamp: false
-          Value: false
+          Value: true
         - Alpha: 0.699999988079071
           Class: rviz/Map
           Color Scheme: costmap
@@ -294,36 +294,13 @@ Visualization Manager:
         - Alpha: 1
           Buffer Length: 1
           Class: rviz/Path
-          Color: 25; 255; 0
-          Enabled: true
-          Head Diameter: 0.30000001192092896
-          Head Length: 0.20000000298023224
-          Length: 0.30000001192092896
-          Line Style: Lines
-          Line Width: 0.029999999329447746
-          Name: Local Plan
-          Offset:
-            X: 0
-            Y: 0
-            Z: 0
-          Pose Color: 255; 85; 255
-          Pose Style: None
-          Radius: 0.029999999329447746
-          Shaft Diameter: 0.10000000149011612
-          Shaft Length: 0.10000000149011612
-          Topic: /move_base/TrajectoryPlannerROS/local_plan
-          Unreliable: false
-          Value: true
-        - Alpha: 1
-          Buffer Length: 1
-          Class: rviz/Path
           Color: 255; 255; 110
           Enabled: true
           Head Diameter: 0.30000001192092896
           Head Length: 0.20000000298023224
           Length: 0.30000001192092896
           Line Style: Billboards
-          Line Width: 0.019999999552965164
+          Line Width: 0.029999999329447746
           Name: Global Plan
           Offset:
             X: 0
@@ -334,7 +311,46 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /move_base/NavfnROS/plan
+          Topic: /move_base/TebLocalPlannerROS/global_plan
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Buffer Length: 1
+          Class: rviz/Path
+          Color: 25; 255; 0
+          Enabled: true
+          Head Diameter: 0.30000001192092896
+          Head Length: 0.20000000298023224
+          Length: 0.30000001192092896
+          Line Style: Billboards
+          Line Width: 0.05000000074505806
+          Name: Local Plan
+          Offset:
+            X: 0
+            Y: 0
+            Z: 0
+          Pose Color: 255; 85; 255
+          Pose Style: None
+          Radius: 0.029999999329447746
+          Shaft Diameter: 0.10000000149011612
+          Shaft Length: 0.10000000149011612
+          Topic: /move_base/TebLocalPlannerROS/local_plan
+          Unreliable: false
+          Value: true
+        - Alpha: 1
+          Arrow Length: 0.4000000059604645
+          Axes Length: 0.30000001192092896
+          Axes Radius: 0.009999999776482582
+          Class: rviz/PoseArray
+          Color: 255; 25; 0
+          Enabled: true
+          Head Length: 0.07000000029802322
+          Head Radius: 0.029999999329447746
+          Name: PoseArray
+          Shaft Length: 0.23000000417232513
+          Shaft Radius: 0.009999999776482582
+          Shape: Arrow (Flat)
+          Topic: /move_base/TebLocalPlannerROS/teb_poses
           Unreliable: false
           Value: true
       Enabled: true
@@ -367,25 +383,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.749871253967285
+      Distance: 6.397626876831055
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -3.2775912284851074
-        Y: 0.1956687718629837
-        Z: 7.178281307220459
+        X: 6.285048484802246
+        Y: -1.490501880645752
+        Z: 4.083276271820068
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.9997962117195129
+      Pitch: 0.6297963261604309
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.1199545860290527
+      Yaw: 5.789954662322998
     Saved: ~
 Window Geometry:
   Camera:
@@ -395,7 +411,7 @@ Window Geometry:
   Height: 996
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd0000000400000000000001d200000346fc020000000afb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d00000212000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d00650072006101000002550000012e0000001600fffffffb0000000c00430061006d00650072006101000002030000019d0000000000000000000000010000010f00000346fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000346000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004bd0000003efc0100000002fb0000000800540069006d00650100000000000004bd000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000002e50000034600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000020b00000346fc020000000afb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d00000212000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d00650072006101000002550000012e0000001600fffffffb0000000c00430061006d00650072006101000002030000019d0000000000000000000000010000010f00000346fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000346000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004bd0000003efc0100000002fb0000000800540069006d00650100000000000004bd000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000002ac0000034600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:

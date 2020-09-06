@@ -1,0 +1,22 @@
+<launch>
+  <master auto="start"/>
+
+  <!--- Run AMCL -->
+  <!--- We load ACML here with diff=true to support our differential drive robot -->
+  <include file="$(find i3e-d3_navigation)/launch/amcl.launch"/>
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find i3e-d3_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find i3e-d3_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find i3e-d3_navigation)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find i3e-d3_navigation)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find i3e-d3_navigation)/config/teb_local_planner_params.yaml" command="load" />
+
+    <!--param name="teb_base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /-->
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+    <param name="controller_frequency" value="5.0" />
+
+    <remap from="odom" to="odometry/filtered" />
+
+  </node>
+</launch>
