@@ -78,13 +78,13 @@
             <visual>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <geometry>
-                    <box size="${camera_box_size} ${camera_box_size} ${camera_box_size}"/>
+                    <box size="0.015 0.030 0.027"/>
                 </geometry>
             </visual>
             <collision>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <geometry>
-                    <box size="${camera_box_size} ${camera_box_size} ${camera_box_size}"/>
+                    <box size="0.015 0.030 0.027"/>
                 </geometry>
             </collision>
         </link>
@@ -102,15 +102,15 @@
           <sensor type="camera" name="camera">
             <update_rate>30.0</update_rate>
             <camera name="head">
-              <horizontal_fov>1.3962634</horizontal_fov>
+              <horizontal_fov>1.085595</horizontal_fov>
               <image>
-                <width>800</width>
-                <height>800</height>
+                <width>640</width>
+                <height>480</height>
                 <format>R8G8B8</format>
               </image>
               <clip>
-                <near>0.02</near>
-                <far>300</far>
+                <near>0.03</near>
+                <far>100</far>
               </clip>
               <noise>
                 <type>gaussian</type>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <launch>
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'" />
     
