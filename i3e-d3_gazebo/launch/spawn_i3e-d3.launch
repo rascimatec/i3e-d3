@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_manipulation)/urdf/i3e-d3_open_manipulator.urdf.xacro'" />
     
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>

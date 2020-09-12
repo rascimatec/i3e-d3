@@ -1,12 +1,30 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="use_robot_name" value="open_manipulator"/>
 
     <!-- Load controller configuration -->
     <rosparam command="load" file="$(find i3e-d3_control)/config/control.yaml"/>
     
+    <rosparam file="$(find i3e-d3_manipulation)/config/gazebo_controller.yaml" command="load" />
+    <rosparam file="$(find i3e-d3_manipulation)/config/open_manipulator_controller.yaml" command="load"/>
+    
     <!-- Spawn controllers -->
     <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
-          args="i3e_d3_velocity_controller i3e_d3_joint_publisher"/>
+          args="i3e_d3_velocity_controller 
+                i3e_d3_joint_publisher
+                $(arg use_robot_name)/joint_state_controller
+                $(arg use_robot_name)/joint1_position
+                $(arg use_robot_name)/joint2_position
+                $(arg use_robot_name)/joint3_position
+                $(arg use_robot_name)/joint4_position
+                $(arg use_robot_name)/gripper_position
+                $(arg use_robot_name)/gripper_sub_position"/>
+    
+
+    <node name="gripper_sub_publisher" pkg="open_manipulator_gazebo" type="gripper_sub_publisher" output="screen" ns="$(arg use_robot_name)"/>
+    <!-- ros_control robotis manipulator launch file -->
+    <!--include file="$(find i3e-d3_manipulation)/launch/open_manipulator_controller.launch"/-->
+
 
     <!-- Convert joint states to TF transforms -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>    

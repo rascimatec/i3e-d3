@@ -11,7 +11,7 @@
     <xacro:include filename="$(find i3e-d3_description)/urdf/decorations.urdf.xacro"/>
     
     <!-- Base, head and neck sizes -->
-    <xacro:property name="base_x_size" value="0.30"/>
+    <xacro:property name="base_x_size" value="0.35"/>
     <xacro:property name="base_y_size" value="0.30"/>
     <xacro:property name="base_z_size" value="0.50"/>
 
@@ -40,8 +40,8 @@
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <mesh filename="package://i3e-d3_description/meshes/body.stl"/>
-                <!--cylinder radius="${base_x_size/2}" length="${base_z_size}"/-->
+                <!--mesh filename="package://i3e-d3_description/meshes/body.stl"/-->
+                <cylinder radius="${base_x_size/2}" length="${base_z_size}"/>
             </geometry>
             <material name="blue">
                 <color rgba="0.0 0.0 1.0 1.0"/>
@@ -194,11 +194,18 @@
     </gazebo>
 
     <!-- Gazebo ROS Control Plugin -->
-    <gazebo>
+    <!--gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
             <robotNamespace>$(arg robot_namespace)</robotNamespace>
             <legacyModeNS>true</legacyModeNS>
         </plugin>
-    </gazebo>
-    
+    </gazebo-->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <controlPeriod>0.001</controlPeriod>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>    
+  
 </robot>
