@@ -2,7 +2,6 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="i3e-d3_accessories">
 
     <xacro:property name="camera_box_size" value="0.04"/>
-    <arg name="robot_namespace" default="/"/>
     
     <!-- 3irobotix LIDAR -->
     <xacro:macro name="i3e-d3_lidar" params="*joint_pose">
@@ -60,7 +59,7 @@
               </ray>
               <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
                 <robotNamespace>$(arg robot_namespace)</robotNamespace>
-                <topicName>/i3e_d3/laser/scan</topicName>
+                <topicName>laser/scan</topicName>
                 <frameName>3irobotix_lidar</frameName>
               </plugin>
             </sensor>
@@ -126,7 +125,7 @@
               <robotNamespace>$(arg robot_namespace)</robotNamespace>
               <alwaysOn>true</alwaysOn>
               <updateRate>0.0</updateRate>
-              <cameraName>i3e_d3/camera1</cameraName>
+              <cameraName>camera</cameraName>
               <imageTopicName>image_raw</imageTopicName>
               <cameraInfoTopicName>camera_info</cameraInfoTopicName>
               <frameName>camera_link</frameName>
@@ -161,7 +160,8 @@
             <visualize>true</visualize>
             <topic>__default_topic__</topic>
             <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-              <topicName>imu/data</topicName>
+              <!--robotNamespace>$(arg robot_namespace)</robotNamespace-->
+              <topicName>$(arg robot_namespace)/imu/data</topicName>
               <bodyName>imu_link</bodyName>
               <updateRateHZ>10.0</updateRateHZ>
               <gaussianNoise>0.0</gaussianNoise>

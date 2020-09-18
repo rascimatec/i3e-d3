@@ -65,7 +65,7 @@ TeleopD3::TeleopD3(): linear_(1), angular_(0){
 
     rev_ = true;
 
-    vel_pub_ = nh_.advertise<geometry_msgs::Twist>("/i3e_d3_velocity_controller/cmd_vel", 1);
+    vel_pub_ = nh_.advertise<geometry_msgs::Twist>("velocity_controller/cmd_vel", 1);
     joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 10, &TeleopD3::joyCallback, this);
 
 }
