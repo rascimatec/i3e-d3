@@ -1,4 +1,4 @@
-i3e_d3:
+#i3e_d3:
   # Publish all joint states
   joint_publisher:
     type: "joint_state_controller/JointStateController"
