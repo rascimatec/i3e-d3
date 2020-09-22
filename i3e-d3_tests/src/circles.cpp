@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     ros::NodeHandle nh;
 
     ros::Publisher vel_publihsher;
-    vel_publihsher = nh.advertise<geometry_msgs::Twist>("/i3e_d3_velocity_controller/cmd_vel", 10);
+    vel_publihsher = nh.advertise<geometry_msgs::Twist>("/i3e_d3/velocity_controller/cmd_vel", 10);
     
     geometry_msgs::Twist vel;
     vel.linear.x = 0.7;

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="i3e-d3" xmlns:xacro="http://www.ros.org/wiki/xacro">
     
-    <arg name="robot_namespace" default="i3e_d3"/>
+    <xacro:arg name="robot_namespace" default="i3e_d3"/>
 
     <xacro:property name="PI" value="3.14159"/>
     
@@ -40,8 +40,8 @@
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <!--mesh filename="package://i3e-d3_description/meshes/body.stl"/-->
-                <cylinder radius="${base_x_size/2}" length="${base_z_size}"/>
+                <mesh filename="package://i3e-d3_description/meshes/body.stl"/>
+                <!--cylinder radius="${base_x_size/2}" length="${base_z_size}"/-->
             </geometry>
             <material name="blue">
                 <color rgba="0.0 0.0 1.0 1.0"/>
