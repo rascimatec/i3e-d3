@@ -1,12 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="robot_namespace" default="/"/>
-
-  <!-- Load robot description -->
-  <include file="$(find i3e-d3_description)/launch/description.launch" >
-    <arg name="robot_namespace" default="$(arg robot_namespace)"/>
-  </include>
+  <arg name="robot_namespace" default="i3e_d3"/>
 
   <!-- Load controller configuration -->
   <rosparam command="load" file="$(find i3e-d3_control)/config/control.yaml"/>
@@ -16,12 +11,20 @@
         args="$(arg robot_namespace)/velocity_controller 
               $(arg robot_namespace)/joint_publisher"/>
 
-  <!-- Convert joint states to TF transforms -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>    
-  
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
-
+    
   <group ns="$(arg robot_namespace)">
+    <!-- Load robot description -->
+    <include file="$(find i3e-d3_description)/launch/description.launch" >
+      <arg name="robot_namespace" default="$(arg robot_namespace)"/>
+    </include>
+
+    <!-- Convert joint states to TF transforms -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      <param name="tf_prefix" value="$(arg robot_namespace)"/>
+    </node>    
+    
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+
     <!-- Start EKF -->
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
       <rosparam command="load" file="$(find i3e-d3_control)/config/ekf_localization.yaml"/>
