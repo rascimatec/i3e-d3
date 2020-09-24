@@ -27,7 +27,7 @@ velocity_controller:
   cmd_vel_timeout: 0.25
 
   # Base frame_id
-  base_frame_id: base_link #default: base_link
+  base_frame_id: i3e_d3_tf/base_link #default: base_link
   enable_odom_tf: false
 
   # Velocity and acceleration limits
