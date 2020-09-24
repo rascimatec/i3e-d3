@@ -1,21 +1,12 @@
 <?xml version="1.0"?>
 <launch>
 
-    <arg name="robot_namespace" default="/"/> <!-- Aqui é pra ser o namespace -->
-
-    <!--param name="robot_description" command="$(find xacro)/xacro ..inorder '$(find i3e-d3_manipulation_description)/urdf/i3e-d3_manipulation_robot.urdf.xacro'" /-->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'" />
-
-    
-    <arg name="x" default="0"/>
-    <arg name="y" default="0"/>
-    <arg name="z" default="0.5"/>
+    <arg name="robot_name" default="/"/>
+    <arg name="init_pose" default="-x 0 -y 0 -z 0.5"/>
     
     <node name="i3e_d3_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-          args="-urdf 
-                -param robot_description 
-                -model $(arg robot_namespace) 
-                -x $(arg x) -y $(arg y) -z $(arg z)" />
+          respawn="false" args="$(arg init_pose) -urdf -param /robot_description 
+                                -model $(arg robot_name)" />
           
     <!-- Include control launch -->
     <include file="$(find i3e-d3_control)/launch/start_control.launch"/>

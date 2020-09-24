@@ -161,13 +161,13 @@
             <topic>__default_topic__</topic>
             <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
               <!--robotNamespace>$(arg robot_namespace)</robotNamespace-->
-              <topicName>$(arg robot_namespace)/imu/data</topicName>
+              <topicName>imu/data</topicName>
               <bodyName>imu_link</bodyName>
               <updateRateHZ>10.0</updateRateHZ>
               <gaussianNoise>0.0</gaussianNoise>
               <xyzOffset>0 0 0</xyzOffset>
               <rpyOffset>0 0 0</rpyOffset>
-              <frameName>imu_link</frameName>
+              <frameName>$(arg robot_namespace)_tf/imu_link</frameName>
               <initialOrientationAsReference>false</initialOrientationAsReference>
             </plugin>
             <pose>0 0 0 0 0 0</pose>

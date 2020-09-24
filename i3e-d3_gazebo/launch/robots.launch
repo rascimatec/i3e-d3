@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <!--param name="robot_description" command="$(find xacro)/xacro ..inorder '$(find i3e-d3_manipulation_description)/urdf/i3e-d3_manipulation_robot.urdf.xacro'" /-->
+    <param name="robot_description" command="$(find xacro)/xacro.py $(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro"/>
+
+    <!-- BEGIN ROBOT 1-->
+    <group ns="i3e_d3"> <!-- Need to use tf_prefix in URDF file -->
+      <param name="tf_prefix" value="i3e_d3_tf" />
+      <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch" >
+        <arg name="init_pose" value="-x 0 -y 0 -z 0.5" />
+        <arg name="robot_name"  value="I3E_D3" />
+      </include>
+    </group>
+
+</launch>
