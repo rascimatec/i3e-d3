@@ -12,6 +12,7 @@
     <param name="controller_frequency" value="5.0" />
 
     <remap from="odom" to="odometry/filtered" />
+    <remap from="map" to="/map"/>
 
   </node>
 </launch>
