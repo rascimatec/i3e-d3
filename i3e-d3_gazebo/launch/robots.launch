@@ -1,16 +1,26 @@
 <?xml version="1.0"?>
 <launch>
+
+    <arg name="robot1_ns" default="i3e_d3"/>
+
     <!--param name="robot_description" command="$(find xacro)/xacro ..inorder '$(find i3e-d3_manipulation_description)/urdf/i3e-d3_manipulation_robot.urdf.xacro'" /-->
     <param name="robot_description" command="$(find xacro)/xacro.py $(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro"/>
 
+    <arg name="map_file" default="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/>
+    <!-- Run the map server -->
+    <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)">
+        <param name="frame_id" value="/map" />
+    </node>
+    
     <!-- BEGIN ROBOT 1-->
-    <group ns="i3e_d3"> <!-- Need to use tf_prefix in URDF file -->
-      <param name="tf_prefix" value="i3e_d3_tf" />
+    <group ns="$(arg robot1_ns)"> <!-- Need to use tf_prefix in URDF file -->
+      <param name="tf_prefix" value="$(arg robot1_ns)_tf" />
       <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch" >
         <arg name="init_pose" value="-x 0 -y 0 -z 0.5" />
-        <arg name="robot_name"  value="I3E_D3" />
+        <arg name="robot_name" value="$(arg robot1_ns)" />
+        <arg name="namespace" default="$(arg robot1_ns)"/>
       </include>
-      <include file="$(find i3e-d3_control)/launch/start_joy_control.launch"/>
+      <include file="$(find i3e-d3_navigation)/launch/amcl.launch"/>
     </group>
 
 </launch>

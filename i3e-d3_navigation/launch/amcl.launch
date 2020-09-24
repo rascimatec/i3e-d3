@@ -1,12 +1,8 @@
 <?xml version="1.0"?>
 <launch>
     
-    <arg name="map_file" default="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/>
     <arg name="use_map_topic" default="true"/>
-    <arg name="scan_topic" default="i3e_d3/laser/scan" />
-
-    <!-- Run the map server -->
-    <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)"/>
+    <arg name="scan_topic" default="laser/scan" />
 
     <!-- Run AMCL -->
     <node pkg="amcl" type="amcl" name="amcl">
@@ -44,6 +40,11 @@
         <param name="recovery_alpha_slow" value="0.0"/>
         <param name="recovery_alpha_fast" value="0.0"/>
         <remap from="scan" to="$(arg scan_topic)"/>
+
+        <param name="global_frame_id" value="/map"/>	
+        <remap from="static_map" to="/static_map" /> 
+        <remap from="map" to="/map" />
+        
     </node>
 
 </launch>

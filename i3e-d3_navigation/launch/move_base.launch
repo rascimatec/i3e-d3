@@ -1,5 +1,9 @@
 <launch>
- 
+
+   <!--- Run AMCL -->
+  <include file="$(find amcl)/examples/amcl_diff.launch" />
+  
+  <!-- Run Move Base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 
     <rosparam file="$(find i3e-d3_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
@@ -12,9 +16,10 @@
     <rosparam file="$(find i3e-d3_navigation)/config/move_base_params.yaml" command="load" />
     
     <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
-    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
+    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS" />
     
     <remap from="odom" to="odometry/filtered" />
+    <remap from="map" to="/map" />
   </node>
 
 </launch>

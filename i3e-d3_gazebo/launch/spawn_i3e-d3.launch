@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-
+    <arg name="namespace" default=""/>
     <arg name="robot_name" default="/"/>
     <arg name="init_pose" default="-x 0 -y 0 -z 0.5"/>
     
@@ -9,6 +9,8 @@
                                 -model $(arg robot_name)" />
           
     <!-- Include control launch -->
-    <include file="$(find i3e-d3_control)/launch/start_control.launch"/>
+    <include file="$(find i3e-d3_control)/launch/start_control.launch">
+        <arg name="namespace" value="$(arg namespace)"/>
+    </include>
 
 </launch>
