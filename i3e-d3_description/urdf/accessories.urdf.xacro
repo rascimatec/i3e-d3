@@ -167,7 +167,7 @@
               <gaussianNoise>0.0</gaussianNoise>
               <xyzOffset>0 0 0</xyzOffset>
               <rpyOffset>0 0 0</rpyOffset>
-              <frameName>$(arg robot_namespace)_tf/imu_link</frameName>
+              <frameName>$(arg robot_namespace)/imu_link</frameName>
               <initialOrientationAsReference>false</initialOrientationAsReference>
             </plugin>
             <pose>0 0 0 0 0 0</pose>

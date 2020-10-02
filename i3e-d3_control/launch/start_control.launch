@@ -2,7 +2,7 @@
 <launch>
 
   <arg name="namespace" default=""/>
-  <arg name="tf_prefix" value="$(arg namespace)_tf" />
+  <arg name="tf_prefix" value="$(arg namespace)" />
 
   <!-- Load robot description -->
   <!--include file="$(find i3e-d3_description)/launch/description.launch" >
