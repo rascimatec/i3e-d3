@@ -27,6 +27,7 @@ velocity_controller:
 
   # Base frame_id
   base_frame_id: base_link #default: base_link
+  odom_frame_id: odom
   enable_odom_tf: false
 
   # Velocity and acceleration limits

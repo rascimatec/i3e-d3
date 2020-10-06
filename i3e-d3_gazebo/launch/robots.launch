@@ -2,16 +2,21 @@
 <launch>
 
   <arg name="robot1_ns" default="i3e_d3"/>
+  <arg name="map_file" default="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/>
+  <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/teb.rviz"/>
 
   <!--param name="robot_description" command="$(find xacro)/xacro ..inorder '$(find i3e-d3_manipulation_description)/urdf/i3e-d3_manipulation_robot.urdf.xacro'" /-->
   <param name="robot_description" command="$(find xacro)/xacro.py $(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro"/>
 
-  <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/teb.rviz"/>
-  <arg name="map_file" default="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/>
   <!-- Run the map server -->
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)">
     <param name="frame_id" value="/map" />
   </node>
+
+  <!-- Run the Rviz -->
+  <include file="$(find i3e-d3_viz)/launch/view_robot.launch">
+    <arg name="rviz_config" value="$(arg rviz_config)"/>
+  </include>
   
   <!-- BEGIN ROBOT 1-->
   <group ns="$(arg robot1_ns)"> <!-- Need to use tf_prefix in URDF file -->
@@ -22,10 +27,8 @@
       <arg name="namespace" value="$(arg robot1_ns)"/>
     </include>
     <include file="$(find i3e-d3_navigation)/launch/amcl.launch"/>
+    <include file="$(find i3e-d3_control)/launch/start_joy_control.launch"/>
     <include file="$(find i3e-d3_navigation)/launch/teb_planner.launch"/>
-    <include file="$(find i3e-d3_viz)/launch/view_robot.launch">
-      <arg name="rviz_config" value="$(arg rviz_config)"/>
-    </include>
   </group>
 
 </launch>
