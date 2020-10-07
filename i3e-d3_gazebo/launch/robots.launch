@@ -27,7 +27,6 @@
       <arg name="namespace" value="$(arg robot1_ns)"/>
     </include>
     <include file="$(find i3e-d3_navigation)/launch/amcl.launch"/>
-    <include file="$(find i3e-d3_control)/launch/start_joy_control.launch"/>
     <include file="$(find i3e-d3_navigation)/launch/teb_planner.launch"/>
   </group>
 
