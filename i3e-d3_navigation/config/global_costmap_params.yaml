@@ -1,7 +1,6 @@
 global_costmap:
-   #global_frame: i3e_d3/odom
-   global_frame: map
-   robot_base_frame: i3e_d3/base_footprint
+   global_frame: odom
+   robot_base_frame: base_footprint
    update_frequency: 5.0
    publish_frequency: 5.0
    width: 40.0
