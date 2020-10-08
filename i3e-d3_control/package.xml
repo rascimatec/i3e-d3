@@ -4,10 +4,7 @@
   <version>0.0.0</version>
   <description>The i3e-d3_control package</description>
 
-  <!-- One maintainer tag required, multiple allowed, one person per tag -->
-  <!-- Example:  -->
-  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="felipe@todo.todo">felipe</maintainer>
+  <maintainer email="felipe18mohr@ieee.org">Felipe Mohr</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->

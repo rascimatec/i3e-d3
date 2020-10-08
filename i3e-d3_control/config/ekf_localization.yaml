@@ -1,18 +1,17 @@
-#i3e_d3:
 odom_frame: odom
 base_link_frame: base_link
 world_frame: odom
+map_frame: map
 
 two_d_mode: true
-
 frequency: 50
 
 odom0: velocity_controller/odom
 odom0_config: [false, false, false,
-               false, false, false,
-               true, true, true,
-               false, false, true,
-               false, false, false]
+                false, false, false,
+                true, true, true,
+                false, false, true,
+                false, false, false]
 odom0_differential: false
 odom0_queue_size: 10
 

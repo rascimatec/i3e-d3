@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="i3e-d3" xmlns:xacro="http://www.ros.org/wiki/xacro">
     
-    <xacro:arg name="robot_namespace" default="/"/>
+    <xacro:arg name="robot_namespace" default="i3e_d3"/>
 
     <xacro:property name="PI" value="3.14159"/>
     
@@ -202,7 +202,7 @@
     </gazebo-->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <!--robotNamespace>$(arg robot_namespace)</robotNamespace-->
+      <robotNamespace>$(arg robot_namespace)</robotNamespace>
       <controlPeriod>0.001</controlPeriod>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
       <legacyModeNS>true</legacyModeNS>

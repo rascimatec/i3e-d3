@@ -16,6 +16,6 @@
         <arg name="headless" value="$(arg headless)"/>
     </include>
 
-    <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch"/>
+    <include file="$(find i3e-d3_gazebo)/launch/robots.launch"/>
     
 </launch>

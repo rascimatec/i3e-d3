@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/i3e_d3.rviz"/>
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" output="screen"/>
+  <arg name="namespace" default="i3e_d3"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" output="screen">
+    <remap from="/initialpose" to="/$(arg namespace)/initialpose"/>
+    <remap from="/move_base_simple/goal" to="/$(arg namespace)/move_base_simple/goal"/>
+  </node>
 </launch>
