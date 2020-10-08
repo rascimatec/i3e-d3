@@ -11,9 +11,8 @@
     <xacro:include filename="$(find i3e-d3_description)/urdf/decorations.urdf.xacro"/>
     
     <!-- Base, head and neck sizes -->
-    <xacro:property name="base_x_size" value="0.35"/>
-    <xacro:property name="base_y_size" value="0.30"/>
-    <xacro:property name="base_z_size" value="0.50"/>
+    <xacro:property name="base_diameter" value="0.315"/>
+    <xacro:property name="base_height" value="0.34"/>
 
     <xacro:property name="head_x_size" value="0.20"/>
     <xacro:property name="head_y_size" value="0.20"/>
@@ -23,25 +22,24 @@
     <xacro:property name="neck_y_size" value="0.08"/>
     <xacro:property name="neck_z_size" value="0.07"/>
 
-    <xacro:property name="cog_x" value="-0.013"/>
-    <xacro:property name="cog_z" value="-0.23825904"/>
+    <!--xacro:property name="cog_x" value="-0.013"/-->
+    <!--xacro:property name="cog_z" value="-0.23825904"/-->
     
-
     <!-- Wheel Dimensions -->
     <xacro:property name="wheel_length" value="0.0762"/>
     <xacro:property name="wheel_radius" value="0.127"/>
     <!-- Wheel Mounting Positions -->
     <xacro:property name="wheel_x_offset" value="-0.075"/>
-    <xacro:property name="wheel_y_offset" value="${wheel_length/2 + base_y_size/2 + 0.005}"/>
-    <xacro:property name="wheel_z_offset" value="${cog_z + 0.05}"/>
+    <xacro:property name="wheel_y_offset" value="${wheel_length/2 + base_diameter/2 + 0.005}"/>
+    <xacro:property name="wheel_z_offset" value="${-base_height/2 + 0.05}"/>
 
     <!-- Base link is the center of the robot -->
     <link name="base_link">
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <mesh filename="package://i3e-d3_description/meshes/body.stl"/>
-                <!--cylinder radius="${base_x_size/2}" length="${base_z_size}"/-->
+                <!--mesh filename="package://i3e-d3_description/meshes/body.stl"/-->
+                <cylinder radius="${base_diameter/2}" length="${base_height}"/>
             </geometry>
             <material name="blue">
                 <color rgba="0.0 0.0 1.0 1.0"/>
@@ -50,7 +48,7 @@
         <collision> 
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="${base_x_size} ${base_y_size} ${base_z_size}"/>
+                <cylinder radius="${base_diameter/2}" length="${base_height}"/>
             </geometry>
         </collision>
     </link>
@@ -107,7 +105,7 @@
     <joint name="neck_joint" type="fixed">
         <parent link="base_link"/>
         <child link="neck"/>
-        <origin xyz="-0.077 0.0 ${neck_z_size/2 + 0.262}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="-0.04 0.0 ${neck_z_size/2 + base_height/2}" rpy="0.0 0.0 0.0"/>
     </joint>
 
     <link name="head">
@@ -136,7 +134,7 @@
     <joint name="head_joint" type="fixed">
         <parent link="base_link"/>
         <child link="head"/>
-        <origin xyz="-0.077 0.0 ${neck_z_size + 0.262 + 0.096}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="-0.04 0.0 ${neck_z_size + base_height/2 + 0.096}" rpy="0.0 0.0 0.0"/>
     </joint>
 
 
@@ -174,10 +172,10 @@
     
     <!-- Sensors -->
     <xacro:i3e-d3_lidar>
-        <origin xyz="0.008 0.0 ${base_z_size + cog_z + 0.025}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.045 0.0 ${base_height/2 + 0.025}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_lidar>
     <xacro:i3e-d3_camera>
-        <origin xyz="0.03 0.0 ${base_z_size + cog_z + neck_z_size + 0.04}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.067 0.0 ${base_height/2 + neck_z_size + 0.04}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_camera>
     <xacro:i3e-d3_imu>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
