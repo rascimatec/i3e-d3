@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="namespace" default="i3e_d3"/>
-  <arg name="tf_prefix" default="$(arg namespace)" />
+  <arg name="tf_prefix" default="i3e_d3"/>
 
   <!-- Load robot description -->
+  <!--arg name="namespace" default="i3e_d3"/-->
   <!--include file="$(find i3e-d3_description)/launch/description.launch" >
     <arg name="robot_namespace" default="$(arg robot_namespace)"/>
   </include-->

@@ -16,18 +16,21 @@
   <!-- Run the Rviz -->
   <include file="$(find i3e-d3_viz)/launch/view_robot.launch">
     <arg name="rviz_config" value="$(arg rviz_config)"/>
+    <arg name="namespace" default="i3e_d3"/>
   </include>
   
   <!-- BEGIN ROBOT 1-->
   <group ns="$(arg robot1_ns)"> <!-- Need to use tf_prefix in URDF file -->
     <param name="tf_prefix" value="$(arg robot1_ns)" />
     <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch" >
-      <arg name="init_pose" value="-x 0 -y 0 -z 0.5" />
-      <arg name="robot_name" value="$(arg robot1_ns)" />
-      <arg name="namespace" value="$(arg robot1_ns)"/>
+      <arg name="tf_prefix" value="$(arg robot1_ns)"/>
     </include>
-    <include file="$(find i3e-d3_navigation)/launch/amcl.launch"/>
-    <include file="$(find i3e-d3_navigation)/launch/teb_planner.launch"/>
+    <include file="$(find i3e-d3_navigation)/launch/amcl.launch">
+      <arg name="tf_prefix" value="$(arg robot1_ns)"/>
+    </include>
+    <include file="$(find i3e-d3_navigation)/launch/teb_planner.launch">
+      <arg name="tf_prefix" value="$(arg robot1_ns)"/>
+    </include>
   </group>
 
 </launch>
