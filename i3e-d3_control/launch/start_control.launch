@@ -35,7 +35,10 @@
     <remap from="cmd_vel_out" to="velocity_controller/cmd_vel"/>        
   </node>
 
-  <!-- Include manipulator controller configuration and spawner -->
+  <!-- Include manipulator controller configurations -->
   <include file="$(find i3e-d3_manipulation_control)/launch/i3e-d3_manipulation_controller.launch"/>
+  <include file="$(find open_manipulator_controller)/launch/open_manipulator_controller.launch">
+    <arg name="use_platform" value="false"/>
+  </include>
 
 </launch>
