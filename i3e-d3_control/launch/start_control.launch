@@ -36,7 +36,7 @@
   </node>
 
   <!-- Include manipulator controller configurations -->
-  <include file="$(find i3e-d3_manipulation_control)/launch/i3e-d3_manipulation_controller.launch"/>
+  <include file="$(find i3e-d3_manipulation_gazebo)/launch/i3e-d3_manipulation_controller.launch"/>
   <include file="$(find i3e-d3_manipulation_control)/launch/open_manipulator_controller.launch">
     <arg name="use_platform" value="false"/>
   </include>
