@@ -14,28 +14,16 @@
     <!-- Base, head and neck sizes -->
     <xacro:property name="base_radius" value="0.155"/>
     <xacro:property name="base_height" value="0.342"/>
-
-    <xacro:property name="head_x_size" value="0.20"/>
-    <xacro:property name="head_y_size" value="0.20"/>
-    <xacro:property name="head_z_size" value="0.215"/>
-
-    <xacro:property name="neck_x_size" value="0.08"/>
-    <xacro:property name="neck_y_size" value="0.08"/>
-    <xacro:property name="neck_z_size" value="0.07"/>
-
-    <!--xacro:property name="cog_x" value="-0.013"/>
-    <xacro:property name="cog_z" value="-0.23825904"/-->
-    <xacro:property name="cog_x" value="0"/>
-    <xacro:property name="cog_z" value="${-base_height/2}"/>
     
     <xacro:property name="base_weight" value="0.515"/>
+    
     <!-- Wheel Dimensions -->
     <xacro:property name="wheel_length" value="0.0762"/>
     <xacro:property name="wheel_radius" value="0.088"/>
     <!-- Wheel Mounting Positions -->
     <xacro:property name="wheel_x_offset" value="0"/>
     <xacro:property name="wheel_y_offset" value="${wheel_length/2 + base_radius + 0.005}"/>
-    <xacro:property name="wheel_z_offset" value="${cog_z + 0.05}"/>
+    <xacro:property name="wheel_z_offset" value="${-base_height/2 + 0.05}"/>
 
     <!-- Base link is the center of the robot -->
     <link name="base_link">
@@ -82,66 +70,8 @@
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </joint>
 
-    <link name="neck">
-        <visual>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <box size="${neck_x_size} ${neck_y_size} ${neck_z_size}"/>
-            </geometry>
-            <material name="blue">
-                <color rgba="0.0 0.0 1.0 1.0"/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <box size="${neck_x_size} ${neck_y_size} ${neck_z_size}"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
-        </inertial>
-    </link>
 
-    <joint name="neck_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="neck"/>
-        <origin xyz="-0.077 0.0 ${neck_z_size/2 + 0.262}" rpy="0.0 0.0 0.0"/>
-    </joint>
-
-    <link name="head">
-        <visual>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <mesh filename="package://i3e-d3_description/meshes/head.stl"/>
-            </geometry>
-            <material name="blue">
-                <color rgba="0.0 0.0 1.0 1.0"/>
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <box size="${head_x_size} ${head_y_size} ${head_z_size}"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
-        </inertial>
-    </link>
-
-    <joint name="head_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="head"/>
-        <origin xyz="-0.077 0.0 ${neck_z_size + 0.262 + 0.096}" rpy="0.0 0.0 0.0"/>
-    </joint>
-
-
-    <xacro:i3e-d3_decorate/>
+    <!--xacro:i3e-d3_decorate/-->
 
     <!-- I3E-D3 wheel macros -->
     <xacro:i3e-d3_wheel prefix="left">
@@ -161,24 +91,22 @@
     
     <!-- Sensors -->
     <xacro:i3e-d3_lidar>
-        <origin xyz="${base_radius/2} 0.0 ${base_height + cog_z + 0.025}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="${base_radius/2} 0.0 ${base_height/2 + 0.025}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_lidar>
+    <!--
     <xacro:i3e-d3_camera>
-        <origin xyz="0.03 0.0 ${base_height + cog_z + neck_z_size + 0.04}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.03 0.0 ${base_height/2 + neck_z_size + 0.04}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_camera>
+    -->
     <xacro:i3e-d3_imu>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_imu>
 
     <gazebo reference="base_link"><material>Gazebo/Yellow</material></gazebo>
+    <!--
     <gazebo reference="neck"><material>Gazebo/DarkGrey</material></gazebo>
     <gazebo reference="head"><material>Gazebo/Yellow</material></gazebo>
-
-    <gazebo reference="caster">
-        <material>Gazebo/DarkGrey</material>
-        <mu1 value="0.0"/>
-        <mu2 value="0.0"/>
-    </gazebo>
+    -->
 
     <!-- Gazebo ROS Control Plugin -->
     <!--gazebo>
