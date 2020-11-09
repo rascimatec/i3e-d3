@@ -21,7 +21,7 @@
     <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch"/>
     <!--include file="$(find i3e-d3_navigation)/launch/amcl.launch"/-->
     <!--include file="$(find i3e-d3_navigation)/launch/teb_planner.launch"/-->
-    <include file="$(find i3e-d3_manipulation_control)/launch/open_manipulator_control_gui.launch"/>
+    <!--include file="$(find i3e-d3_manipulation_control)/launch/open_manipulator_control_gui.launch"/-->
   </group>
 
   <!-- Run the Rviz -->
