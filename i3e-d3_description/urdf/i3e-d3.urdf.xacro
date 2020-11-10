@@ -10,13 +10,14 @@
     <xacro:include filename="$(find i3e-d3_description)/urdf/wheel.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/accessories.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/decorations.urdf.xacro"/>
+    <xacro:include filename="$(find i3e-d3_description)/urdf/head.urdf.xacro"/>
     
     <!-- Base, head and neck sizes -->
     <xacro:property name="base_radius" value="0.155"/>
     <xacro:property name="base_height" value="0.342"/>
     
-    <xacro:property name="base_weight" value="0.515"/>
-    
+    <xacro:property name="base_weight" value="0.515"/>   
+
     <!-- Wheel Dimensions -->
     <xacro:property name="wheel_length" value="0.0762"/>
     <xacro:property name="wheel_radius" value="0.088"/>
@@ -69,6 +70,8 @@
         <child link="inertial_link"/>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </joint>
+
+
 
 
     <!--xacro:i3e-d3_decorate/-->
