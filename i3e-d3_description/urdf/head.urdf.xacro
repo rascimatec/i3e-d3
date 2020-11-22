@@ -3,6 +3,21 @@
   
   <xacro:property name="base_height" value="0.342"/>
 
+  <!-- Transmission macro -->
+  <xacro:macro name="SimpleTransmission" params="joint n">
+    <transmission name="tran_${n}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="servo_${n}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+
   <link name="motor_neck_link">
       <visual>
           <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -57,11 +72,15 @@
       
   </link>
 
-  <joint name="neck_joint" type="fixed">
+  <joint name="neck_joint" type="revolute">
       <parent link="motor_neck_link"/>
       <child link="neck_link"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-1.5707" upper="1.5707" effort="1.0" velocity="2.0"/>
       <origin xyz="0.0 0.0 0.038" rpy="0.0 0.0 0.0"/>
   </joint>
+
+  <xacro:SimpleTransmission n="neck" joint="neck_joint" />
 
   <link name="motor_head_link">
       <visual>
@@ -84,15 +103,18 @@
                   iyy="1e-6" iyz="0.0" 
                   izz="1e-6"/>
       </inertial>
-      
   </link>
 
-  <joint name="motor_head_joint" type="fixed">
-      <origin xyz="0.0 -0.02 0.065" rpy="0.0 ${-PI/2} 0.0"/>
-      <parent link="neck_link"/>
-      <child link="motor_head_link"/>
+  <joint name="motor_head_joint" type="revolute">
+    <origin xyz="0.0 -0.02 0.065" rpy="0.0 ${-PI/2} 0.0"/>
+    <parent link="neck_link"/>
+    <child link="motor_head_link"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.2618" upper="0.7854" effort="1.0" velocity="2.0"/>
+    <origin xyz="0.0 0.0 0.038" rpy="0.0 0.0 0.0"/>
   </joint>
 
+  <xacro:SimpleTransmission n="head" joint="motor_head_joint" />
 
   <link name="head_link">
       <visual>
