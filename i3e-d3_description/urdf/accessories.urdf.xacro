@@ -71,34 +71,34 @@
   </xacro:macro>
 
   <!-- Camera -->
-  <xacro:macro name="i3e-d3_camera" params="*joint_pose">
+  <xacro:macro name="i3e-d3_camera">
     <link name="camera_link">
       <inertial>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-        <mass value="0.05"/>
+        <mass value="3.3e-3"/>
         <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
       </inertial>
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <geometry>
-            <box size="0.015 0.030 0.027"/>
+          <box size="0.001 0.025 0.024"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <geometry>
-            <box size="0.015 0.030 0.027"/>
+          <box size="0.025 0.024 0.001"/>
         </geometry>
       </collision>
     </link>
 
     <joint name="camera_joint" type="fixed">
-      <parent link="base_link"/>
+      <parent link="head_link"/>
       <child link="camera_link"/>
-      <xacro:insert_block name="joint_pose"/>
-    </joint>
+      <origin xyz="0.0 -0.03 0.036" rpy="0.0 0.0 ${-PI/2}"/>
+    </joint>    
 
-    <gazebo reference="camera_link"><material>Gazebo/Red</material></gazebo>
+    <gazebo reference="camera_link"><material>Gazebo/Green</material></gazebo>
 
     <!-- Camera Plugin -->
     <gazebo reference="camera_link">

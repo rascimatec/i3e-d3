@@ -9,7 +9,6 @@
     <!-- Included URDF/XACRO Files -->
     <xacro:include filename="$(find i3e-d3_description)/urdf/wheel.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/accessories.urdf.xacro"/>
-    <xacro:include filename="$(find i3e-d3_description)/urdf/decorations.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/head.urdf.xacro"/>
     
     <!-- Base, head and neck sizes -->
@@ -72,9 +71,7 @@
     </joint>
 
 
-
-
-    <!--xacro:i3e-d3_decorate/-->
+    <xacro:i3e-d3_head/>
 
     <!-- I3E-D3 wheel macros -->
     <xacro:i3e-d3_wheel prefix="left">
@@ -93,14 +90,10 @@
 
     
     <!-- Sensors -->
+    <xacro:i3e-d3_camera/>
     <xacro:i3e-d3_lidar>
         <origin xyz="${base_radius/2} 0.0 ${base_height/2 + 0.025}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_lidar>
-    <!--
-    <xacro:i3e-d3_camera>
-        <origin xyz="0.03 0.0 ${base_height/2 + neck_z_size + 0.04}" rpy="0.0 0.0 0.0"/>
-    </xacro:i3e-d3_camera>
-    -->
     <xacro:i3e-d3_imu>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_imu>

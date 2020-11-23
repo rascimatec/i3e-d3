@@ -1,183 +1,190 @@
 <?xml version="1.0"?>
 <robot name="i3e-d3_head" xmlns:xacro="http://www.ros.org/wiki/xacro">
   
-  <xacro:property name="base_height" value="0.342"/>
+  <xacro:macro name="i3e-d3_head">
 
-  <!-- Transmission macro -->
-  <xacro:macro name="SimpleTransmission" params="joint n">
-    <transmission name="tran_${n}">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${joint}">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="servo_${n}">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>
+    <xacro:macro name="TransmissionServo" params="joint n">
+        <transmission name="tran_${n}">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${joint}">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="servo_${n}">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        </transmission>
+    </xacro:macro>
+
+    <link name="motor_neck_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/servo.stl"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.04 0.02 0.04"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.001"/>
+                <inertia 
+                    ixx="1e-6" ixy="0.0" ixz="0.0" 
+                    iyy="1e-6" iyz="0.0" 
+                    izz="1e-6"/>
+        </inertial>
+        
+    </link>
+
+    <joint name="motor_neck_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="motor_neck_link"/>
+        <origin xyz="0.005 0.0 ${base_height/2}" rpy="0.0 0.0 ${PI/2}"/>
+    </joint>
+
+    <link name="neck_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.05 0.03 0.05"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.05 0.03 0.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.001"/>
+                <inertia 
+                    ixx="1e-6" ixy="0.0" ixz="0.0" 
+                    iyy="1e-6" iyz="0.0" 
+                    izz="1e-6"/>
+        </inertial>
+        
+    </link>
+
+    <joint name="neck_joint" type="revolute">
+        <parent link="motor_neck_link"/>
+        <child link="neck_link"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-1.5707" upper="1.5707" effort="0.8" velocity="0.5"/>
+        <origin xyz="0.0 0.0 0.038" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <xacro:TransmissionServo n="neck" joint="neck_joint" />
+
+    <link name="motor_head_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/servo.stl"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.04 0.02 0.04"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.001"/>
+                <inertia 
+                    ixx="1e-6" ixy="0.0" ixz="0.0" 
+                    iyy="1e-6" iyz="0.0" 
+                    izz="1e-6"/>
+        </inertial>
+    </link>
+
+    <joint name="motor_head_joint" type="revolute">
+        <origin xyz="0.0 -0.02 0.065" rpy="0.0 ${-PI/2} 0.0"/>
+        <parent link="neck_link"/>
+        <child link="motor_head_link"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-0.2618" upper="0.7854" effort="0.8" velocity="0.5"/>
+    </joint>
+
+    <xacro:TransmissionServo n="head" joint="motor_head_joint" />
+
+    <link name="head_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.13 0.06 0.1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.13 0.06 0.1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.001"/>
+                <inertia 
+                    ixx="1e-6" ixy="0.0" ixz="0.0" 
+                    iyy="1e-6" iyz="0.0" 
+                    izz="1e-6"/>
+        </inertial>
+        
+    </link>
+
+    <joint name="head_joint" type="fixed">
+        <origin xyz="0.0 -0.04 0.0" rpy="0.0 ${PI/2} 0.0"/>
+        <child link="head_link"/>
+        <parent link="motor_head_link"/>
+    </joint>
+
+    <link name="display">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.064 0.01 0.096"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.064 0.01 0.096"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.001"/>
+                <inertia 
+                    ixx="1e-6" ixy="0.0" ixz="0.0" 
+                    iyy="1e-6" iyz="0.0" 
+                    izz="1e-6"/>
+        </inertial>
+        
+    </link>
+
+    <joint name="display_joint" type="fixed">
+        <origin xyz="0.0 -0.033 -0.01" rpy="0.0 ${PI/2} 0.0"/>
+        <child link="display"/>
+        <parent link="head_link"/>
+    </joint>
+
+    <gazebo reference="motor_neck_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+    <gazebo reference="motor_head_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+    <gazebo reference="display">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
   </xacro:macro>
-
-
-  <link name="motor_neck_link">
-      <visual>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-          <geometry>
-              <mesh filename="package://i3e-d3_description/meshes/servo.stl"/>
-          </geometry>
-      </visual>
-      <collision>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-          <geometry>
-              <box size="0.04 0.02 0.04"/>
-          </geometry>
-      </collision>
-      <inertial>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-              <mass value="0.001"/>
-              <inertia 
-                  ixx="1e-6" ixy="0.0" ixz="0.0" 
-                  iyy="1e-6" iyz="0.0" 
-                  izz="1e-6"/>
-      </inertial>
-      
-  </link>
-
-  <joint name="motor_neck_joint" type="fixed">
-      <parent link="base_link"/>
-      <child link="motor_neck_link"/>
-      <origin xyz="0.005 0.0 ${base_height/2}" rpy="0.0 0.0 ${PI/2}"/>
-  </joint>
-
-  <link name="neck_link">
-      <visual>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-          <geometry>
-              <box size="0.05 0.03 0.05"/>
-          </geometry>
-      </visual>
-      <collision>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-          <geometry>
-              <box size="0.05 0.03 0.05"/>
-          </geometry>
-      </collision>
-      <inertial>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-              <mass value="0.001"/>
-              <inertia 
-                  ixx="1e-6" ixy="0.0" ixz="0.0" 
-                  iyy="1e-6" iyz="0.0" 
-                  izz="1e-6"/>
-      </inertial>
-      
-  </link>
-
-  <joint name="neck_joint" type="revolute">
-      <parent link="motor_neck_link"/>
-      <child link="neck_link"/>
-      <axis xyz="0 0 1"/>
-      <limit lower="-1.5707" upper="1.5707" effort="0.8" velocity="0.2"/>
-      <origin xyz="0.0 0.0 0.038" rpy="0.0 0.0 0.0"/>
-  </joint>
-
-  <xacro:SimpleTransmission n="neck" joint="neck_joint" />
-
-  <link name="motor_head_link">
-      <visual>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-          <geometry>
-              <mesh filename="package://i3e-d3_description/meshes/servo.stl"/>
-          </geometry>
-      </visual>
-      <collision>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-          <geometry>
-              <box size="0.04 0.02 0.04"/>
-          </geometry>
-      </collision>
-      <inertial>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-              <mass value="0.001"/>
-              <inertia 
-                  ixx="1e-6" ixy="0.0" ixz="0.0" 
-                  iyy="1e-6" iyz="0.0" 
-                  izz="1e-6"/>
-      </inertial>
-  </link>
-
-  <joint name="motor_head_joint" type="revolute">
-    <origin xyz="0.0 -0.02 0.065" rpy="0.0 ${-PI/2} 0.0"/>
-    <parent link="neck_link"/>
-    <child link="motor_head_link"/>
-    <axis xyz="0 0 1"/>
-    <limit lower="-0.2618" upper="0.7854" effort="0.8" velocity="0.2"/>
-    <origin xyz="0.0 0.0 0.038" rpy="0.0 0.0 0.0"/>
-  </joint>
-
-  <xacro:SimpleTransmission n="head" joint="motor_head_joint" />
-
-  <link name="head_link">
-      <visual>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-          <geometry>
-              <box size="0.13 0.06 0.1"/>
-          </geometry>
-      </visual>
-      <collision>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-          <geometry>
-              <box size="0.05 0.03 0.05"/>
-          </geometry>
-      </collision>
-      <inertial>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-              <mass value="0.001"/>
-              <inertia 
-                  ixx="1e-6" ixy="0.0" ixz="0.0" 
-                  iyy="1e-6" iyz="0.0" 
-                  izz="1e-6"/>
-      </inertial>
-      
-  </link>
-
-  <joint name="head_joint" type="fixed">
-      <origin xyz="0.0 -0.04 0.0" rpy="0.0 ${PI/2} 0.0"/>
-      <child link="head_link"/>
-      <parent link="motor_head_link"/>
-  </joint>
-
-
-
-  <link name="display">
-      <visual>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-          <geometry>
-              <box size="0.064 0.01 0.096"/>
-          </geometry>
-      </visual>
-      <collision>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-          <geometry>
-              <box size="0.064 0.01 0.096"/>
-          </geometry>
-      </collision>
-      <inertial>
-          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-              <mass value="0.001"/>
-              <inertia 
-                  ixx="1e-6" ixy="0.0" ixz="0.0" 
-                  iyy="1e-6" iyz="0.0" 
-                  izz="1e-6"/>
-      </inertial>
-      
-  </link>
-
-  <joint name="display_joint" type="fixed">
-      <origin xyz="0.0 -0.033 -0.01" rpy="0.0 ${PI/2} 0.0"/>
-      <child link="display"/>
-      <parent link="head_link"/>
-  </joint>
-
-
 
 </robot>
