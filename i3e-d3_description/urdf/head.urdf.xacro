@@ -33,7 +33,7 @@
       </collision>
       <inertial>
           <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-              <mass value="0.069"/>
+              <mass value="0.001"/>
               <inertia 
                   ixx="1e-6" ixy="0.0" ixz="0.0" 
                   iyy="1e-6" iyz="0.0" 
@@ -63,7 +63,7 @@
       </collision>
       <inertial>
           <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-              <mass value="0.05"/>
+              <mass value="0.001"/>
               <inertia 
                   ixx="1e-6" ixy="0.0" ixz="0.0" 
                   iyy="1e-6" iyz="0.0" 
@@ -76,7 +76,7 @@
       <parent link="motor_neck_link"/>
       <child link="neck_link"/>
       <axis xyz="0 0 1"/>
-      <limit lower="-1.5707" upper="1.5707" effort="1.0" velocity="2.0"/>
+      <limit lower="-1.5707" upper="1.5707" effort="0.8" velocity="0.2"/>
       <origin xyz="0.0 0.0 0.038" rpy="0.0 0.0 0.0"/>
   </joint>
 
@@ -97,7 +97,7 @@
       </collision>
       <inertial>
           <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-              <mass value="0.069"/>
+              <mass value="0.001"/>
               <inertia 
                   ixx="1e-6" ixy="0.0" ixz="0.0" 
                   iyy="1e-6" iyz="0.0" 
@@ -110,7 +110,7 @@
     <parent link="neck_link"/>
     <child link="motor_head_link"/>
     <axis xyz="0 0 1"/>
-    <limit lower="-0.2618" upper="0.7854" effort="1.0" velocity="2.0"/>
+    <limit lower="-0.2618" upper="0.7854" effort="0.8" velocity="0.2"/>
     <origin xyz="0.0 0.0 0.038" rpy="0.0 0.0 0.0"/>
   </joint>
 
@@ -131,7 +131,7 @@
       </collision>
       <inertial>
           <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-              <mass value="0.05"/>
+              <mass value="0.001"/>
               <inertia 
                   ixx="1e-6" ixy="0.0" ixz="0.0" 
                   iyy="1e-6" iyz="0.0" 
@@ -163,7 +163,7 @@
       </collision>
       <inertial>
           <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-              <mass value="0.05"/>
+              <mass value="0.001"/>
               <inertia 
                   ixx="1e-6" ixy="0.0" ixz="0.0" 
                   iyy="1e-6" iyz="0.0" 
