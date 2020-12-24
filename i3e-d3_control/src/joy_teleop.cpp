@@ -103,10 +103,6 @@ void TeleopD3::joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
         neck_cmd_.data = 1.5707*joy->axes[neck_];
         head_cmd_.data = 0.5235*joy->axes[head_] + 0.2618;
     }
-    else {
-        neck_cmd_.data = 0.0;
-        head_cmd_.data = 0.0;
-    }
 
 }
 

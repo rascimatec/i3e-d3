@@ -103,7 +103,7 @@
         </inertial>
     </link>
 
-    <joint name="motor_head_joint" type="revolute">
+    <joint name="head_joint" type="revolute">
         <origin xyz="0.0 -0.02 0.065" rpy="0.0 ${-PI/2} 0.0"/>
         <parent link="neck_link"/>
         <child link="motor_head_link"/>
@@ -111,7 +111,7 @@
         <limit lower="-0.2618" upper="0.7854" effort="0.8" velocity="0.5"/>
     </joint>
 
-    <xacro:TransmissionServo n="head" joint="motor_head_joint" />
+    <xacro:TransmissionServo n="head" joint="head_joint" />
 
     <link name="head_link">
         <visual>
@@ -137,7 +137,7 @@
         
     </link>
 
-    <joint name="head_joint" type="fixed">
+    <joint name="motor_head_joint" type="fixed">
         <origin xyz="0.0 -0.04 0.0" rpy="0.0 ${PI/2} 0.0"/>
         <child link="head_link"/>
         <parent link="motor_head_link"/>

@@ -9,7 +9,7 @@ joint_neck_position:
 
 joint_head_position:
   type: position_controllers/JointPositionController
-  joint: motor_head_joint
+  joint: head_joint
 
 
 # Differential Drive Controller
