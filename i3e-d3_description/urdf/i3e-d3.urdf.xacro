@@ -82,10 +82,10 @@
     </xacro:i3e-d3_wheel>
 
     <xacro:i3e-d3_caster prefix="front">
-        <!--origin xyz="0.11 0.0 ${wheel_z_offset - wheel_radius + 0.0351}" rpy="0.0 0.0 0.0"/-->
+        <origin xyz="${2*base_radius/3} 0.0 ${-base_height/2}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_caster>
     <xacro:i3e-d3_caster prefix="back">
-        <!--origin xyz="-0.11 0.0 ${wheel_z_offset - wheel_radius + 0.0351}" rpy="0.0 0.0 0.0"/-->
+        <origin xyz="${-2*base_radius/3} 0.0 ${-base_height/2}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_caster>
 
     
