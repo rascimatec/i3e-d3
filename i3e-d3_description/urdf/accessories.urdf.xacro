@@ -4,8 +4,6 @@
   <xacro:if value="$(arg use_open_manipulator)">
     <xacro:include filename="$(find i3e-d3_manipulation_description)/urdf/i3e-d3_manipulation_robot.urdf.xacro"/>
   </xacro:if>
-
-  <xacro:property name="camera_box_size" value="0.04"/>
   
   <!-- 3irobotix LIDAR -->
   <xacro:macro name="i3e-d3_lidar" params="*joint_pose">
@@ -93,9 +91,9 @@
     </link>
 
     <joint name="camera_joint" type="fixed">
-      <parent link="head_link"/>
+      <parent link="face_link"/>
       <child link="camera_link"/>
-      <origin xyz="0.0 -0.03 0.036" rpy="0.0 0.0 ${-PI/2}"/>
+      <origin xyz="0.05 -0.026 0.0" rpy="${-PI/2} 0.0 ${-PI/2}"/>
     </joint>    
 
     <gazebo reference="camera_link"><material>Gazebo/Green</material></gazebo>

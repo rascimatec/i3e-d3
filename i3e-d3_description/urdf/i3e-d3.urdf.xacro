@@ -98,7 +98,7 @@
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_imu>
 
-    <gazebo reference="base_link"><material>Gazebo/Yellow</material></gazebo>
+    <gazebo reference="base_link"><material>Gazebo/Blue</material></gazebo>
     <!--
     <gazebo reference="neck"><material>Gazebo/DarkGrey</material></gazebo>
     <gazebo reference="head"><material>Gazebo/Yellow</material></gazebo>

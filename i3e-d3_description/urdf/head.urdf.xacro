@@ -50,13 +50,13 @@
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="0.05 0.03 0.05"/>
+                <mesh filename="package://i3e-d3_description/meshes/neck.stl"/>
             </geometry>
         </visual>
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="0.05 0.03 0.05"/>
+                <mesh filename="package://i3e-d3_description/meshes/neck.stl"/>
             </geometry>
         </collision>
         <inertial>
@@ -75,7 +75,7 @@
         <child link="neck_link"/>
         <axis xyz="0 0 1"/>
         <limit lower="-1.5707" upper="1.5707" effort="0.8" velocity="0.5"/>
-        <origin xyz="0.0 0.0 0.038" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.0 0.0 0.016" rpy="0.0 0.0 0.0"/>
     </joint>
 
     <xacro:TransmissionServo n="neck" joint="neck_joint" />
@@ -104,26 +104,26 @@
     </link>
 
     <joint name="head_joint" type="revolute">
-        <origin xyz="0.0 -0.02 0.065" rpy="0.0 ${-PI/2} 0.0"/>
+        <origin xyz="-0.0085 -0.117 0.142" rpy="0.0 ${-PI/2} 0.0"/>
         <parent link="neck_link"/>
         <child link="motor_head_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="-0.2618" upper="0.7854" effort="0.8" velocity="0.5"/>
+        <limit lower="-0.2618" upper="0.2618" effort="0.8" velocity="0.5"/>
     </joint>
 
     <xacro:TransmissionServo n="head" joint="head_joint" />
 
-    <link name="head_link">
+    <link name="face_link">
         <visual>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-PI/2} ${PI}"/>
             <geometry>
-                <box size="0.13 0.06 0.1"/>
+                <mesh filename="package://i3e-d3_description/meshes/face.stl"/>
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-PI/2} ${PI}"/>
             <geometry>
-                <box size="0.13 0.06 0.1"/>
+                <mesh filename="package://i3e-d3_description/meshes/face.stl"/>
             </geometry>
         </collision>
         <inertial>
@@ -138,22 +138,22 @@
     </link>
 
     <joint name="motor_head_joint" type="fixed">
-        <origin xyz="0.0 -0.04 0.0" rpy="0.0 ${PI/2} 0.0"/>
-        <child link="head_link"/>
+        <origin xyz="-0.0115 -0.0435 -0.012" rpy="0.0 0.0 0.0"/>
+        <child link="face_link"/>
         <parent link="motor_head_link"/>
     </joint>
 
-    <link name="display">
+    <link name="display_link">
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="0.064 0.01 0.096"/>
+                <mesh filename="package://i3e-d3_description/meshes/LEDs_face.stl"/>
             </geometry>
         </visual>
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="0.064 0.01 0.096"/>
+                <mesh filename="package://i3e-d3_description/meshes/LEDs_face.stl"/>
             </geometry>
         </collision>
         <inertial>
@@ -168,10 +168,49 @@
     </link>
 
     <joint name="display_joint" type="fixed">
-        <origin xyz="0.0 -0.033 -0.01" rpy="0.0 ${PI/2} 0.0"/>
-        <child link="display"/>
-        <parent link="head_link"/>
+        <origin xyz="-0.005 -0.02 0.0" rpy="${PI/2} ${PI/2} 0.0"/>
+        <child link="display_link"/>
+        <parent link="face_link"/>
     </joint>
+
+    <link name="head_cover_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="${-PI/2} ${PI/2} ${PI/2}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/head_cover.stl"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/head_cover.stl"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.001"/>
+                <inertia 
+                    ixx="1e-6" ixy="0.0" ixz="0.0" 
+                    iyy="1e-6" iyz="0.0" 
+                    izz="1e-6"/>
+        </inertial>
+        
+    </link>
+
+    <joint name="head_cover_joint" type="fixed">
+        <origin xyz="0.011 0.009 0.0" rpy="0.0 ${PI} 0.0"/>
+        <child link="head_cover_link"/>
+        <parent link="face_link"/>
+    </joint>
+
+    
+    <gazebo reference="neck_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="face_link">
+        <material>Gazebo/Whire</material>
+    </gazebo>
 
     <gazebo reference="motor_neck_link">
         <material>Gazebo/DarkGrey</material>
@@ -181,8 +220,12 @@
         <material>Gazebo/DarkGrey</material>
     </gazebo>
 
-    <gazebo reference="display">
-        <material>Gazebo/Red</material>
+    <gazebo reference="display_link">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <gazebo reference="head_cover_link">
+        <material>Gazebo/Blue</material>
     </gazebo>
 
   </xacro:macro>
