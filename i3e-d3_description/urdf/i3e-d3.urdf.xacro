@@ -10,6 +10,7 @@
     <xacro:include filename="$(find i3e-d3_description)/urdf/wheel.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/accessories.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/head.urdf.xacro"/>
+    <xacro:include filename="$(find i3e-d3_description)/urdf/materials.urdf.xacro"/>
     
     <!-- Base, head and neck sizes -->
     <xacro:property name="base_radius" value="0.155"/>
@@ -32,9 +33,7 @@
             <geometry>
                 <cylinder radius="${base_radius}" length="${base_height}"/>
             </geometry>
-            <material name="blue">
-                <color rgba="0.0 0.0 1.0 1.0"/>
-            </material>
+            <material name="blue"/>"
         </visual>
         <collision> 
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>

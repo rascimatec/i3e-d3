@@ -96,8 +96,6 @@
       <origin xyz="0.05 -0.026 0.0" rpy="${-PI/2} 0.0 ${-PI/2}"/>
     </joint>    
 
-    <gazebo reference="camera_link"><material>Gazebo/Green</material></gazebo>
-
     <!-- Camera Plugin -->
     <gazebo reference="camera_link">
       <sensor type="camera" name="camera">
