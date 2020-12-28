@@ -70,6 +70,7 @@
     </joint>
 
 
+    <!-- I3E-D3 head and neck -->
     <xacro:i3e-d3_head/>
 
     <!-- I3E-D3 wheel macros -->
@@ -79,7 +80,8 @@
     <xacro:i3e-d3_wheel prefix="right">
         <origin xyz="${wheel_x_offset} ${-wheel_y_offset} ${wheel_z_offset}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_wheel>
-
+    
+    <!-- I3E-D3 caster macros -->
     <xacro:i3e-d3_caster prefix="front">
         <origin xyz="${2*base_radius/3} 0.0 ${-base_height/2}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_caster>

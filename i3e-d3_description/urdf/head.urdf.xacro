@@ -123,19 +123,13 @@
             </geometry>
             <material name="gray"/>
         </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <geometry>
-                <mesh filename="package://i3e-d3_description/meshes/face.stl"/>
-            </geometry>
-        </collision>
         <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <mass value="0.001"/>
+            <origin xyz="0.01 0.004 -0.004" rpy="0.0 0.0 0.0"/>
+                <mass value="0.259"/>
                 <inertia 
-                    ixx="1e-6" ixy="0.0" ixz="0.0" 
-                    iyy="1e-6" iyz="0.0" 
-                    izz="1e-6"/>
+                    ixx="7.966e-4" ixy="-1.019e-7" ixz="9.196e-6" 
+                    iyy="5.993e-4" iyz="7.634e-8" 
+                    izz="3.527e-4"/>
         </inertial>
         
     </link>
@@ -154,12 +148,6 @@
             </geometry>
             <material name="white"/>
         </visual>
-        <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${PI}"/>
-            <geometry>
-                <mesh filename="package://i3e-d3_description/meshes/LEDs_face.stl"/>
-            </geometry>
-        </collision>
         <inertial>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${PI}"/>
                 <mass value="0.001"/>
@@ -186,18 +174,18 @@
             <material name="blue"/>
         </visual>
         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="-0.012 0.0 -0.008" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <mesh filename="package://i3e-d3_description/meshes/head_cover.stl"/>
+                <box size="0.105 0.130 0.170"/>
             </geometry>
         </collision>
         <inertial>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                <mass value="0.001"/>
+                <mass value="0.252"/>
                 <inertia 
-                    ixx="1e-6" ixy="0.0" ixz="0.0" 
-                    iyy="1e-6" iyz="0.0" 
-                    izz="1e-6"/>
+                    ixx="1.463e-3" ixy="0.0" ixz="1.598e-4" 
+                    iyy="1.046e-3" iyz="0.0" 
+                    izz="8.181e-4"/>
         </inertial>
         
     </link>
