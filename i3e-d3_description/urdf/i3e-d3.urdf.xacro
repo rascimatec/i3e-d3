@@ -69,7 +69,6 @@
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </joint>
 
-
     <!-- I3E-D3 head and neck -->
     <xacro:i3e-d3_head/>
 
@@ -93,6 +92,7 @@
     <!-- Sensors -->
     <xacro:i3e-d3_camera>
       <origin xyz="0.026 0.004 0.05" rpy="0.0 0.0 0.0"/>
+
     </xacro:i3e-d3_camera>
     <xacro:i3e-d3_lidar>
         <origin xyz="${base_radius/2} 0.0 ${base_height/2 + 0.025}" rpy="0.0 0.0 0.0"/>
