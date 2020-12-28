@@ -20,6 +20,7 @@
                     <mesh filename="package://i3e-d3_description/meshes/wheel_husky.dae"
                           scale="${wheel_radius/husky_wheel_radius} ${wheel_length/husky_wheel_length} ${wheel_radius/husky_wheel_radius}"/>
                 </geometry>
+                <material name="dark_grey"/>
             </visual>
             <collision>
                 <origin xyz="0.0 0.0 0.0" rpy="${PI/2} 0.0 0.0"/>
@@ -31,7 +32,6 @@
 
         <!-- Need to adjust gazebo properties -->
         <gazebo reference="${prefix}_wheel_link">
-            <material>Gazebo/DarkGrey</material>
             <mu1 value="1.0"/>
             <mu2 value="1.0"/>
             <kp value="10000000.0" />
@@ -56,5 +56,102 @@
             </joint>
         </transmission>
 
-    </xacro:macro>    
+    </xacro:macro>
+
+
+    <xacro:macro name="i3e-d3_caster" params="prefix *joint_pose">
+        
+        <link name="${prefix}_caster_base">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.005"/>
+                <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
+            </inertial>
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.05 0.05 0.005"/>
+                </geometry>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.05 0.05 0.005"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <link name="${prefix}_caster_wheel_support">
+            
+            <xacro:property name="caster_wheel_support_box">
+                <geometry>
+                    <box size="0.025 0.0045 0.02"/>
+                </geometry>
+            </xacro:property>
+            
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.02"/>
+                <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
+            </inertial>
+            <visual>
+                <origin xyz="0.0 0.016 0.0" rpy="0.0 0.0 0.0"/>
+                <xacro:insert_block name="caster_wheel_support_box"/>
+            </visual>
+            <visual>
+                <origin xyz="0.0 -0.016 0.0" rpy="0.0 0.0 0.0"/>
+                <xacro:insert_block name="caster_wheel_support_box"/>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.016 0.0" rpy="0.0 0.0 0.0"/>
+                <xacro:insert_block name="caster_wheel_support_box"/>
+            </collision>
+            <collision>
+                <origin xyz="0.0 -0.016 0.0" rpy="0.0 0.0 0.0"/>
+                <xacro:insert_block name="caster_wheel_support_box"/>
+            </collision>
+        </link>
+
+        <link name="${prefix}_caster_wheel">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.01"/>
+                <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
+            </inertial>
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <sphere radius="0.014"/>
+                </geometry>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <sphere radius="0.014"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${prefix}_caster_base_joint" type="fixed">
+            <parent link="base_link"/>
+            <child link="${prefix}_caster_base"/>
+            <xacro:insert_block name="joint_pose"/>
+        </joint>
+
+        <joint name="${prefix}_caster_wheel_support_joint" type="continuous">
+            <parent link="${prefix}_caster_base"/>
+            <child link="${prefix}_caster_wheel_support"/>
+            <axis xyz="0 0 1"/>
+            <origin xyz="0 0 -0.0125" rpy="0 0 0"/>
+        </joint>
+
+        <joint name="${prefix}_wheel_joint" type="continuous">
+            <parent link="${prefix}_caster_wheel_support"/>
+            <child link="${prefix}_caster_wheel"/>
+            <axis xyz="0 1 0"/>
+            <origin xyz="0 0 -0.011" rpy="0 0 0"/>
+        </joint>
+        
+    </xacro:macro>
+
 </robot>

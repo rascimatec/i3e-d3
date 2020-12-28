@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<robot>
+  <material name="black">
+    <color rgba="0.0 0.0 0.0 1.0"/>
+  </material>
+
+  <material name="blue">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+
+  <material name="gray">
+    <color rgba="0.7 0.7 0.7 1.0"/>
+  </material>
+
+  <material name="darkgray">
+    <color rgba="0.3 0.3 0.3 1.0"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+    
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="neck_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <gazebo reference="face_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <gazebo reference="motor_neck_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="motor_head_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="display_link">
+    <material>Gazebo/Gray</material>
+  </gazebo>
+
+  <gazebo reference="head_cover_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="left_wheel_link">
+    <material>Gazebo/DarkGray</material>
+  </gazebo>
+
+  <gazebo reference="right_wheel_link">
+    <material>Gazebo/DarkGray</material>
+  </gazebo>
+  
+  <gazebo reference="camera_link">
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+
+</robot>

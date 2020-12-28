@@ -2,7 +2,7 @@
 <launch>
     <arg name="tf_prefix" default="i3e_d3"/>
     <arg name="robot_name" default="$(arg tf_prefix)"/>
-    <arg name="init_pose" default="-x 0 -y 0 -z 0.5"/>
+    <arg name="init_pose" default="-x 0 -y 0 -z 0"/>
     
     <node name="i3e_d3_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
           respawn="false" args="$(arg init_pose) -urdf -param /robot_description 

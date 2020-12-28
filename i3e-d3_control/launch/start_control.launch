@@ -17,7 +17,7 @@
 
   <!-- Spawn controllers -->
   <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
-        args="velocity_controller joint_publisher"/>
+        args="velocity_controller joint_publisher joint_neck_position joint_head_position"/>
 
   <!-- Convert joint states to TF transforms -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>    
@@ -35,7 +35,12 @@
     <remap from="cmd_vel_out" to="velocity_controller/cmd_vel"/>        
   </node>
 
-  <!-- Include manipulator controller configuration and spawner -->
-  <!--include file="$(find i3e-d3_manipulation_control)/launch/i3e-d3_manipulation_controller.launch" /-->
+  <!-- Include manipulator controller configurations -->
+  <!--
+  <include file="$(find i3e-d3_manipulation_gazebo)/launch/i3e-d3_manipulation_controller.launch"/>
+  <include file="$(find i3e-d3_manipulation_control)/launch/open_manipulator_controller.launch">
+    <arg name="use_platform" value="false"/>
+  </include>
+  -->
 
 </launch>

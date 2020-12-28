@@ -27,6 +27,7 @@
 
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
+#include <std_msgs/Float64.h>
 #include <sensor_msgs/Joy.h>
 
 class TeleopD3{
@@ -38,16 +39,22 @@ private:
     void joyCallback(const sensor_msgs::Joy::ConstPtr& joy);
 
     geometry_msgs::Twist twist_;
+    std_msgs::Float64 neck_cmd_;
+    std_msgs::Float64 head_cmd_;
     ros::NodeHandle nh_;
 
-    int reverse_;
-    bool rev_;
+    ros::Publisher vel_pub_;
+    ros::Subscriber joy_sub_;
+    ros::Publisher head_joint_pub_;
+    ros::Publisher neck_joint_pub_;
+
+    bool rev_, locked_;
+    int reverse_, lock_head_;
     int stop1_, stop2_;
     int turbo_, slow_;
     int linear_, angular_;
+    int head_, neck_;
     double l_scale_, a_scale_, k_;
-    ros::Publisher vel_pub_;
-    ros::Subscriber joy_sub_;
 
 };
 
@@ -55,6 +62,8 @@ TeleopD3::TeleopD3(): linear_(1), angular_(0){
 
     nh_.param("axis_linear", linear_, linear_);
     nh_.param("axis_angular", angular_, angular_);
+    nh_.param("axis_neck", neck_, neck_);
+    nh_.param("axis_head", head_, head_);
     nh_.param("stop_button1", stop1_, stop1_);
     nh_.param("stop_button2", stop2_, stop2_);
     nh_.param("turbo_button", turbo_, turbo_);
@@ -62,17 +71,23 @@ TeleopD3::TeleopD3(): linear_(1), angular_(0){
     nh_.param("scale_linear", l_scale_, l_scale_);
     nh_.param("scale_angular", a_scale_, a_scale_);
     nh_.param("reverse_button", reverse_, reverse_);
+    nh_.param("lock_head_button", lock_head_, lock_head_);
 
     rev_ = true;
+    locked_ = true;
 
     vel_pub_ = nh_.advertise<geometry_msgs::Twist>("velocity_controller/cmd_vel", 1);
     joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 10, &TeleopD3::joyCallback, this);
+    
+    head_joint_pub_ = nh_.advertise<std_msgs::Float64>("joint_head_position/command", 1);
+    neck_joint_pub_ = nh_.advertise<std_msgs::Float64>("joint_neck_position/command", 1);
 
 }
 
 void TeleopD3::joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
 
     if(joy->buttons[reverse_]) rev_ = !rev_;
+    if(joy->buttons[lock_head_]) locked_ = !locked_;
     
     k_ = 0.4;
     if(joy->buttons[turbo_]) k_ = 1;
@@ -84,10 +99,17 @@ void TeleopD3::joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
     if(joy->axes[linear_] < 0 && rev_) k_ = -k_;
     twist_.angular.z = k_*a_scale_*joy->axes[angular_];
 
+    if(!locked_) {
+        neck_cmd_.data = 1.5707*joy->axes[neck_];
+        head_cmd_.data = 0.5235*joy->axes[head_];
+    }
+
 }
 
 void TeleopD3::moveD3(){    
-    vel_pub_.publish(twist_); 
+    vel_pub_.publish(twist_);
+    neck_joint_pub_.publish(neck_cmd_);
+    head_joint_pub_.publish(head_cmd_);
 }
 
 

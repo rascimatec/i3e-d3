@@ -3,6 +3,15 @@ joint_publisher:
   type: "joint_state_controller/JointStateController"
   publish_rate: 50
 
+joint_neck_position:
+  type: position_controllers/JointPositionController
+  joint: neck_joint
+
+joint_head_position:
+  type: position_controllers/JointPositionController
+  joint: head_joint
+
+
 # Differential Drive Controller
 velocity_controller:
   type        : "diff_drive_controller/DiffDriveController"
@@ -15,8 +24,8 @@ velocity_controller:
   # Wheel separation and diameter. These are both optional.
   # diff_drive_controller will attempt to read either one or both from the
   # URDF if not specified as a parameter
-  #wheel_separation : 0.29
-  #wheel_radius : 0.065
+  #wheel_separation : 0.387
+  #wheel_radius : 0.088
 
   # Wheel separation and radius multipliers
   wheel_separation_multiplier: 1.0 # default: 1.0

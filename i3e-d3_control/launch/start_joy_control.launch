@@ -8,13 +8,16 @@
     </node>
 
     <!-- Axes and buttons -->
-    <param name="reverse_button" value="11" type="int"/>
+    <param name="lock_head_button" value="11" type="int"/>
+    <param name="reverse_button" value="10" type="int"/>
     <param name="stop_button1" value="4" type="int"/>
     <param name="stop_button2" value="5" type="int"/>
     <param name="turbo_button" value="2" type="int"/>
     <param name="slow_button" value="0" type="int"/>
     <param name="axis_linear" value="1" type="int"/>
     <param name="axis_angular" value="0" type="int"/>
+    <param name="axis_neck" value="2" type="int"/>
+    <param name="axis_head" value="3" type="int"/>
     <param name="scale_linear" value="1.5" type="double"/>
     <param name="scale_angular" value="1.5" type="double"/>
 
