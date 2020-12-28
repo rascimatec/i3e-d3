@@ -89,7 +89,9 @@
 
     
     <!-- Sensors -->
-    <xacro:i3e-d3_camera/>
+    <xacro:i3e-d3_camera>
+      <origin xyz="0.026 0.004 0.05" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_camera>
     <xacro:i3e-d3_lidar>
         <origin xyz="${base_radius/2} 0.0 ${base_height/2 + 0.025}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_lidar>
@@ -97,11 +99,6 @@
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_imu>
 
-    <gazebo reference="base_link"><material>Gazebo/Blue</material></gazebo>
-    <!--
-    <gazebo reference="neck"><material>Gazebo/DarkGrey</material></gazebo>
-    <gazebo reference="head"><material>Gazebo/Yellow</material></gazebo>
-    -->
 
     <!-- Gazebo ROS Control Plugin -->
     <!--gazebo>
