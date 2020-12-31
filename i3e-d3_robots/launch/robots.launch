@@ -2,7 +2,7 @@
 <launch>
 
   <arg name="robot1_ns" default="i3e_d3"/>
-  <arg name="map_file" default="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/>
+  <arg name="map_file" default="$(find i3e-d3_navigation)/maps/jackal_race.yaml"/>
   <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/teb.rviz"/>
 
   <!--param name="robot_description" command="$(find xacro)/xacro.py $(find i3e-d3_manipulation_description)/urdf/i3e-d3_manipulation_robot.urdf.xacro"/-->

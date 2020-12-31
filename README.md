@@ -29,7 +29,7 @@ source devel/setup.bash
 ```
 - In the first terminal:
 ```bash
-roslaunch i3e-d3_gazebo i3e-d3_playpen.launch
+roslaunch i3e-d3_gazebo i3e-d3_jackal_world.launch
 ```
 - In the second terminal:
 ```bash

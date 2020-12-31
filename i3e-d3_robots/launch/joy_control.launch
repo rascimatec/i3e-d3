@@ -2,7 +2,7 @@
 <launch>
 
   <arg name="robot1_ns" default="i3e_d3"/>
-  <arg name="map_file" default="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/>
+  <arg name="map_file" default="$(find i3e-d3_navigation)/maps/jackal_race.yaml"/>
   <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/tf_i3e_d3.rviz"/>
   <arg name="use_rviz" default="false"/>
 
