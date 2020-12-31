@@ -1,6 +1,3 @@
-# i3e-d3
-A project of a openSource robotic plataform with a manipulator, developed by the IEEE RAS CIMATEC Student Branch
-
 # I3E-D3
 A project of a openSource robotic plataform with a manipulator, developed by the IEEE RAS CIMATEC Student Branch
 
