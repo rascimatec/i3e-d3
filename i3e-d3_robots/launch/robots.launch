@@ -3,7 +3,7 @@
 
   <arg name="robot1_ns" default="i3e_d3"/>
   <arg name="map_file" default="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/>
-  <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/tf_i3e_d3.rviz"/>
+  <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/teb.rviz"/>
 
   <!--param name="robot_description" command="$(find xacro)/xacro.py $(find i3e-d3_manipulation_description)/urdf/i3e-d3_manipulation_robot.urdf.xacro"/-->
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'"/>
@@ -19,9 +19,9 @@
   <group ns="$(arg robot1_ns)"> <!-- Need to use tf_prefix in URDF file -->
     <param name="tf_prefix" value="$(arg robot1_ns)" />
     <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch"/>
-    <include file="$(find i3e-d3_control)/launch/start_joy_control.launch"/>
-    <!--include file="$(find i3e-d3_navigation)/launch/amcl.launch"/-->
-    <!--include file="$(find i3e-d3_navigation)/launch/teb_planner.launch"/-->
+    <!--include file="$(find i3e-d3_control)/launch/start_joy_control.launch"/-->
+    <include file="$(find i3e-d3_navigation)/launch/amcl.launch"/>
+    <include file="$(find i3e-d3_navigation)/launch/teb_planner.launch"/>
     <!--include file="$(find i3e-d3_manipulation_control)/launch/open_manipulator_control_gui.launch"/-->
   </group>
 
