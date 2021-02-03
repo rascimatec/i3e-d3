@@ -8,6 +8,7 @@
     
     <!-- Included URDF/XACRO Files -->
     <xacro:include filename="$(find i3e-d3_description)/urdf/wheel.urdf.xacro"/>
+    <xacro:include filename="$(find i3e-d3_description)/urdf/caster.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/accessories.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/head.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/materials.urdf.xacro"/>
@@ -81,13 +82,31 @@
     </xacro:i3e-d3_wheel>
     
     <!-- I3E-D3 caster macros -->
-    <xacro:i3e-d3_caster prefix="front">
-        <origin xyz="${2*base_radius/3} 0.0 ${-base_height/2}" rpy="0.0 0.0 0.0"/>
-    </xacro:i3e-d3_caster>
-    <xacro:i3e-d3_caster prefix="back">
-        <origin xyz="${-2*base_radius/3} 0.0 ${-base_height/2}" rpy="0.0 0.0 0.0"/>
-    </xacro:i3e-d3_caster>
+    <xacro:i3e-d3_caster prefix="front_caster" 
+						 radius="0.025" 
+						 x="${2*base_radius/3}" 
+						 y="0.0" 
+						 z="${-base_height/2 + 0.01}" 
+						 roll="0.0"
+						 pitch="0.0" 
+						 yaw="0.0" 
+						 axis_x="0.577350269" 
+						 axis_y="0.577350269" 
+						 axis_z="0.577350269" 
+						 parent_link="base_link" />
 
+    <xacro:i3e-d3_caster prefix="rear_caster" 
+						 radius="0.025" 
+						 x="${-2*base_radius/3}" 
+						 y="0.0" 
+						 z="${-base_height/2 + 0.01}" 
+						 roll="0.0" 
+						 pitch="0.0" 
+						 yaw="0.0" 
+						 axis_x="0.577350269" 
+						 axis_y="0.577350269" 
+						 axis_z="0.577350269" 
+						 parent_link="base_link" />	
     
     <!-- Sensors -->
     <xacro:i3e-d3_camera>
