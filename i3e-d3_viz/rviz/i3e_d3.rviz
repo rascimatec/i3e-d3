@@ -220,40 +220,39 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        i3e_d3/odom:
-          i3e_d3/base_link:
-            i3e_d3/3irobotix_lidar:
-              {}
-            i3e_d3/base_footprint:
-              {}
-            i3e_d3/front_caster_base_link:
-              i3e_d3/front_caster_rotate_link:
-                i3e_d3/front_caster_wheel_link:
-                  {}
-            i3e_d3/imu_link:
-              {}
-            i3e_d3/inertial_link:
-              {}
-            i3e_d3/left_wheel_link:
-              {}
-            i3e_d3/motor_neck_link:
-              i3e_d3/neck_link:
-                i3e_d3/motor_head_link:
-                  i3e_d3/face_link:
-                    i3e_d3/camera_link:
-                      {}
-                    i3e_d3/display_link:
-                      {}
-                    i3e_d3/head_cover_link:
-                      {}
-            i3e_d3/rear_caster_base_link:
-              i3e_d3/rear_caster_rotate_link:
-                i3e_d3/rear_caster_wheel_link:
-                  {}
-            i3e_d3/right_wheel_link:
-              {}
         map:
-          {}
+          i3e_d3/odom:
+            i3e_d3/base_link:
+              i3e_d3/3irobotix_lidar:
+                {}
+              i3e_d3/base_footprint:
+                {}
+              i3e_d3/front_caster_base_link:
+                i3e_d3/front_caster_rotate_link:
+                  i3e_d3/front_caster_wheel_link:
+                    {}
+              i3e_d3/imu_link:
+                {}
+              i3e_d3/inertial_link:
+                {}
+              i3e_d3/left_wheel_link:
+                {}
+              i3e_d3/motor_neck_link:
+                i3e_d3/neck_link:
+                  i3e_d3/motor_head_link:
+                    i3e_d3/face_link:
+                      i3e_d3/camera_link:
+                        {}
+                      i3e_d3/display_link:
+                        {}
+                      i3e_d3/head_cover_link:
+                        {}
+              i3e_d3/rear_caster_base_link:
+                i3e_d3/rear_caster_rotate_link:
+                  i3e_d3/rear_caster_wheel_link:
+                    {}
+              i3e_d3/right_wheel_link:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -303,7 +302,7 @@ Visualization Manager:
           Scale: 1
           Value: true
         Value: false
-      Enabled: false
+      Enabled: true
       Keep: 100
       Name: Odometry
       Position Tolerance: 0.10000000149011612
@@ -317,25 +316,25 @@ Visualization Manager:
         Shaft Length: 0.4000000059604645
         Shaft Radius: 0.029999999329447746
         Value: Arrow
-      Topic: /i3e_d3_velocity_controller/odom
+      Topic: /i3e_d3/velocity_controller/odom
       Unreliable: false
-      Value: false
+      Value: true
     - Alpha: 1
       Arrow Length: 0.30000001192092896
       Axes Length: 0.30000001192092896
       Axes Radius: 0.009999999776482582
       Class: rviz/PoseArray
       Color: 255; 25; 0
-      Enabled: true
+      Enabled: false
       Head Length: 0.07000000029802322
       Head Radius: 0.029999999329447746
       Name: PoseArray
       Shaft Length: 0.23000000417232513
       Shaft Radius: 0.009999999776482582
       Shape: Arrow (Flat)
-      Topic: /particlecloud
+      Topic: /i3e_d3/particlecloud
       Unreliable: false
-      Value: true
+      Value: false
     - Class: rviz/Camera
       Enabled: true
       Image Rendering: background and overlay

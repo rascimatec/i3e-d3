@@ -1,7 +1,6 @@
 <launch>
-
-   <!--- Run AMCL -->
-  <include file="$(find amcl)/examples/amcl_diff.launch" />
+  
+  <arg name="tf_prefix" default="i3e_d3"/>
   
   <!-- Run Move Base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">

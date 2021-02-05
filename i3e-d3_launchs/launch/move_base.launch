@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="robot_ns" default="i3e_d3"/>
+  <arg name="map_file" default="$(find i3e-d3_navigation)/maps/jackal_race.yaml"/>
+  <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/navigation_teb.rviz"/>
+
+  <!--param name="robot_description" command="$(find xacro)/xacro.py $(find i3e-d3_manipulation_description)/urdf/i3e-d3_manipulation_robot.urdf.xacro"/-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'"/>
+
+  <!-- Run the map server -->
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)">
+    <param name="frame_id" value="/map" />
+  </node>  
+  
+  <!-- BEGIN I3E-D3 -->
+  <group ns="$(arg robot_ns)"> <!-- Need to use tf_prefix in URDF file -->
+    <param name="tf_prefix" value="$(arg robot_ns)" />
+    <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch"/>
+    <include file="$(find i3e-d3_navigation)/launch/amcl.launch"/>
+    <include file="$(find i3e-d3_navigation)/launch/move_base.launch"/>
+    <!--include file="$(find i3e-d3_manipulation_control)/launch/open_manipulator_control_gui.launch"/-->
+  </group>
+
+  <!-- Run the Rviz -->
+  <include file="$(find i3e-d3_viz)/launch/view_robot.launch">
+    <arg name="rviz_config" value="$(arg rviz_config)"/>
+    <arg name="namespace" default="i3e_d3"/>
+  </include>
+
+</launch>
