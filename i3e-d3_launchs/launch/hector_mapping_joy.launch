@@ -8,8 +8,7 @@
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'"/>
   
   <!-- BEGIN I3E-D3 -->
-  <group ns="$(arg robot_ns)"> <!-- Need to use tf_prefix in URDF file -->
-    <param name="tf_prefix" value="$(arg robot_ns)" />
+  <group ns="$(arg robot_ns)">
     <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch"/>
     <include file="$(find i3e-d3_control)/launch/start_joy_control.launch"/>
     <include file="$(find i3e-d3_navigation)/launch/hector_mapping.launch"/>

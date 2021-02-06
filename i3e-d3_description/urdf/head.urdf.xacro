@@ -22,7 +22,7 @@
             <geometry>
                 <mesh filename="package://i3e-d3_description/meshes/servo.stl"/>
             </geometry>
-            <material name="darkgray"/>
+            <material name="dark_gray"/>
         </visual>
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${PI/2}"/>
@@ -87,7 +87,7 @@
             <geometry>
                 <mesh filename="package://i3e-d3_description/meshes/servo.stl"/>
             </geometry>
-            <material name="darkgray"/>
+            <material name="dark_gray"/>
         </visual>
         <collision>
             <origin xyz="0.0 0.0 0.0" rpy="${PI/2} ${-PI/2} 0.0"/>

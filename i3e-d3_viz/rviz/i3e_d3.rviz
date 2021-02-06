@@ -161,7 +161,7 @@ Visualization Manager:
           Value: true
       Name: RobotModel
       Robot Description: robot_description
-      TF Prefix: i3e_d3
+      TF Prefix: ""
       Update Interval: 0
       Value: true
       Visual Enabled: true

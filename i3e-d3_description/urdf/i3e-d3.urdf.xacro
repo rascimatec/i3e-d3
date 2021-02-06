@@ -7,11 +7,11 @@
     <xacro:property name="PI" value="3.14159"/>
     
     <!-- Included URDF/XACRO Files -->
+    <xacro:include filename="$(find i3e-d3_description)/urdf/materials.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/wheel.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/caster.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/accessories.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/head.urdf.xacro"/>
-    <xacro:include filename="$(find i3e-d3_description)/urdf/materials.urdf.xacro"/>
     
     <!-- Base, head and neck sizes -->
     <xacro:property name="base_radius" value="0.155"/>
@@ -130,7 +130,7 @@
     </gazebo-->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      <!--robotNamespace>$(arg robot_namespace)</robotNamespace-->
       <controlPeriod>0.001</controlPeriod>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
       <legacyModeNS>true</legacyModeNS>

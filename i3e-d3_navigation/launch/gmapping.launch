@@ -2,14 +2,13 @@
 <launch>
 
     <arg name="scan_topic" default="laser/scan"/>
-    <arg name="tf_prefix" default="i3e_d3"/>
-    <arg name="base_frame" default="$(arg tf_prefix)/base_link"/>
-    <arg name="odom_frame" default="$(arg tf_prefix)/odom"/>
+    <arg name="base_frame" default="base_link"/>
+    <arg name="odom_frame" default="odom"/>
 
     <!-- Defining parameters for slam_gmapping node -->
     <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
         <rosparam command="load" file="$(find i3e-d3_navigation)/config/gmapping_config.yaml"/>
-        <param name="map_frame" value="/map"/>
+        <param name="map_frame" value="map"/>
         <param name="odom_frame" value="$(arg odom_frame)"/>
         <param name="base_frame" value="$(arg base_frame)"/>
         <remap from="scan" to="$(arg scan_topic)"/>

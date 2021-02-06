@@ -3,9 +3,8 @@
     
     <arg name="use_map_topic" default="true"/>
     <arg name="scan_topic" default="laser/scan"/>
-    <arg name="tf_prefix" default="i3e_d3"/>
-    <arg name="base_frame" default="$(arg tf_prefix)/base_link"/>
-    <arg name="odom_frame" default="$(arg tf_prefix)/odom"/>
+    <arg name="base_frame" default="base_link"/>
+    <arg name="odom_frame" default="odom"/>
 
     <!-- Run AMCL -->   
     <node pkg="amcl" type="amcl" name="amcl">
@@ -45,11 +44,13 @@
         <remap from="scan" to="$(arg scan_topic)"/>
         <param name="odom_frame_id" value="$(arg odom_frame)"/>
         <param name="base_frame_id" value="$(arg base_frame)"/>
-
         <param name="global_frame_id" value="/map"/>	
+        
         <remap from="static_map" to="/static_map" /> 
         <remap from="map" to="/map" />
         
     </node>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="map_nav_broadcaster" args="0 0 0 0 0 0 map odom"/>
 
 </launch>
