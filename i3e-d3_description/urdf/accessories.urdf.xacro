@@ -67,7 +67,7 @@
           </noise>
         </ray>
         <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-          <robotNamespace>$(arg robot_namespace)</robotNamespace>
+          <!--robotNamespace>$(arg robot_namespace)</robotNamespace-->
           <topicName>laser/scan</topicName>
           <frameName>3irobotix_lidar</frameName>
         </plugin>
@@ -123,7 +123,7 @@
         </camera>
 
         <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
-          <robotNamespace>$(arg robot_namespace)</robotNamespace>
+          <!--robotNamespace>$(arg robot_namespace)</robotNamespace-->
           <alwaysOn>true</alwaysOn>
           <updateRate>0.0</updateRate>
           <cameraName>camera</cameraName>
@@ -168,7 +168,7 @@
             <gaussianNoise>0.0</gaussianNoise>
             <xyzOffset>0 0 0</xyzOffset>
             <rpyOffset>0 0 0</rpyOffset>
-            <frameName>$(arg robot_namespace)/imu_link</frameName>
+            <frameName>imu_link</frameName>
             <initialOrientationAsReference>false</initialOrientationAsReference>
           </plugin>
           <pose>0 0 0 0 0 0</pose>

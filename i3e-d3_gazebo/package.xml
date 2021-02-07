@@ -17,10 +17,10 @@
   <depend>gazebo_plugins</depend>
   <depend>gazebo_ros</depend>
   <depend>gazebo_ros_control</depend>
-  <depend>hector_gazebo_plugins</depend>
+  <!--depend>hector_gazebo_plugins</!depend-->
   <depend>i3e-d3_control</depend>
   <depend>i3e-d3_description</depend>
-  <depend>multimaster_launch</depend>
+  <!--depend>multimaster_launch</!depend-->
   <depend>rostopic</depend>
 
   <export>

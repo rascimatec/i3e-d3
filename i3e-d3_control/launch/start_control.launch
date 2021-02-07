@@ -1,19 +1,11 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="tf_prefix" default="i3e_d3"/>
-
   <!-- Load robot description -->
-  <!--arg name="namespace" default="i3e_d3"/-->
-  <!--include file="$(find i3e-d3_description)/launch/description.launch" >
-    <arg name="robot_namespace" default="$(arg robot_namespace)"/>
-  </include-->
-  <param name="robot_description" command="$(find xacro)/xacro.py $(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro"/>
 
   <!-- Load controller configuration -->
   <rosparam command="load" file="$(find i3e-d3_control)/config/control.yaml"/>
-  <rosparam param="velocity_controller/base_frame_id" subst_value="True">$(arg tf_prefix)/base_link</rosparam>
-  <rosparam param="velocity_controller/odom_frame_id" subst_value="True">$(arg tf_prefix)/odom</rosparam>
 
   <!-- Spawn controllers -->
   <node name="base_controller_spawner" pkg="controller_manager" type="spawner"

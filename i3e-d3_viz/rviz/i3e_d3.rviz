@@ -5,9 +5,10 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /Status1
         - /Odometry1/Shape1
       Splitter Ratio: 0.5
-    Tree Height: 402
+    Tree Height: 397
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -161,7 +162,7 @@ Visualization Manager:
           Value: true
       Name: RobotModel
       Robot Description: robot_description
-      TF Prefix: i3e_d3
+      TF Prefix: ""
       Update Interval: 0
       Value: true
       Visual Enabled: true
@@ -169,51 +170,52 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
+        3irobotix_lidar:
+          Value: true
         All Enabled: false
-        i3e_d3/3irobotix_lidar:
+        base_footprint:
           Value: true
-        i3e_d3/base_footprint:
+        base_link:
           Value: true
-        i3e_d3/base_link:
+        camera_link:
           Value: true
-        i3e_d3/camera_link:
+        display_link:
           Value: true
-        i3e_d3/display_link:
+        face_link:
           Value: true
-        i3e_d3/face_link:
+        front_caster_base_link:
           Value: true
-        i3e_d3/front_caster_base_link:
+        front_caster_rotate_link:
           Value: true
-        i3e_d3/front_caster_rotate_link:
+        front_caster_wheel_link:
           Value: true
-        i3e_d3/front_caster_wheel_link:
+        head_cover_link:
           Value: true
-        i3e_d3/head_cover_link:
+        imu_link:
           Value: true
-        i3e_d3/imu_link:
+        inertial_link:
           Value: true
-        i3e_d3/inertial_link:
-          Value: true
-        i3e_d3/left_wheel_link:
-          Value: true
-        i3e_d3/motor_head_link:
-          Value: true
-        i3e_d3/motor_neck_link:
-          Value: true
-        i3e_d3/neck_link:
-          Value: true
-        i3e_d3/odom:
-          Value: true
-        i3e_d3/rear_caster_base_link:
-          Value: true
-        i3e_d3/rear_caster_rotate_link:
-          Value: true
-        i3e_d3/rear_caster_wheel_link:
-          Value: true
-        i3e_d3/right_wheel_link:
+        left_wheel_link:
           Value: true
         map:
           Value: true
+        motor_head_link:
+          Value: true
+        motor_neck_link:
+          Value: true
+        neck_link:
+          Value: true
+        odom:
+          Value: true
+        rear_caster_base_link:
+          Value: true
+        rear_caster_rotate_link:
+          Value: true
+        rear_caster_wheel_link:
+          Value: true
+        right_wheel_link:
+          Value: true
+      Marker Alpha: 1
       Marker Scale: 0.4000000059604645
       Name: TF
       Show Arrows: true
@@ -221,38 +223,39 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
-          i3e_d3/odom:
-            i3e_d3/base_link:
-              i3e_d3/3irobotix_lidar:
-                {}
-              i3e_d3/base_footprint:
-                {}
-              i3e_d3/front_caster_base_link:
-                i3e_d3/front_caster_rotate_link:
-                  i3e_d3/front_caster_wheel_link:
-                    {}
-              i3e_d3/imu_link:
-                {}
-              i3e_d3/inertial_link:
-                {}
-              i3e_d3/left_wheel_link:
-                {}
-              i3e_d3/motor_neck_link:
-                i3e_d3/neck_link:
-                  i3e_d3/motor_head_link:
-                    i3e_d3/face_link:
-                      i3e_d3/camera_link:
-                        {}
-                      i3e_d3/display_link:
-                        {}
-                      i3e_d3/head_cover_link:
-                        {}
-              i3e_d3/rear_caster_base_link:
-                i3e_d3/rear_caster_rotate_link:
-                  i3e_d3/rear_caster_wheel_link:
-                    {}
-              i3e_d3/right_wheel_link:
-                {}
+          {}
+        odom:
+          base_link:
+            3irobotix_lidar:
+              {}
+            base_footprint:
+              {}
+            front_caster_base_link:
+              front_caster_rotate_link:
+                front_caster_wheel_link:
+                  {}
+            imu_link:
+              {}
+            inertial_link:
+              {}
+            left_wheel_link:
+              {}
+            motor_neck_link:
+              neck_link:
+                motor_head_link:
+                  face_link:
+                    camera_link:
+                      {}
+                    display_link:
+                      {}
+                    head_cover_link:
+                      {}
+            rear_caster_base_link:
+              rear_caster_rotate_link:
+                rear_caster_wheel_link:
+                  {}
+            right_wheel_link:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -280,7 +283,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Flat Squares
-      Topic: /i3e_d3/laser/scan
+      Topic: /laser/scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -306,6 +309,7 @@ Visualization Manager:
       Keep: 100
       Name: Odometry
       Position Tolerance: 0.10000000149011612
+      Queue Size: 10
       Shape:
         Alpha: 0.6000000238418579
         Axes Length: 1
@@ -316,7 +320,7 @@ Visualization Manager:
         Shaft Length: 0.4000000059604645
         Shaft Radius: 0.029999999329447746
         Value: Arrow
-      Topic: /i3e_d3/velocity_controller/odom
+      Topic: /odometry/filtered
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -329,16 +333,17 @@ Visualization Manager:
       Head Length: 0.07000000029802322
       Head Radius: 0.029999999329447746
       Name: PoseArray
+      Queue Size: 10
       Shaft Length: 0.23000000417232513
       Shaft Radius: 0.009999999776482582
       Shape: Arrow (Flat)
-      Topic: /i3e_d3/particlecloud
+      Topic: /particlecloud
       Unreliable: false
       Value: false
     - Class: rviz/Camera
       Enabled: true
       Image Rendering: background and overlay
-      Image Topic: /i3e_d3/camera/image_raw
+      Image Topic: /camera/image_raw
       Name: Camera
       Overlay Alpha: 0.5
       Queue Size: 2
@@ -359,17 +364,17 @@ Visualization Manager:
       Class: rviz/Map
       Color Scheme: map
       Draw Behind: false
-      Enabled: false
+      Enabled: true
       Name: Map
       Topic: /map
       Unreliable: false
       Use Timestamp: false
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: i3e_d3/odom
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -393,35 +398,35 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 6.285634517669678
+      Distance: 7.884699821472168
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
+      Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.294415682554245
-        Y: 0.3656020760536194
-        Z: 2.3418140411376953
+        X: 0.2742329239845276
+        Y: -0.14297263324260712
+        Z: 1.0877851247787476
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6647961735725403
+      Pitch: 0.44479629397392273
       Target Frame: <Fixed Frame>
-      Value: Orbit (rviz)
-      Yaw: 3.8981401920318604
+      Yaw: 4.593141555786133
     Saved: ~
 Window Geometry:
   Camera:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 996
+  Height: 987
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd0000000400000000000001d200000346fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000001cf000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d0065007200610100000212000001710000001600ffffff000000010000010f00000346fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000346000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004cd0000003efc0100000002fb0000000800540069006d00650100000000000004cd000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000002f50000034600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000400000000000001d20000033dfc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000001ca000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d006500720061010000020d0000016d0000001600ffffff000000010000010f00000346fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000346000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004d00000003efc0100000002fb0000000800540069006d00650100000000000004d0000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000002f80000033d00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -430,6 +435,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 1229
-  X: 51
+  Width: 1232
+  X: 48
   Y: 0
