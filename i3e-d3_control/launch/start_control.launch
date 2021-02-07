@@ -2,11 +2,7 @@
 <launch>
 
   <!-- Load robot description -->
-  <!--arg name="namespace" default="i3e_d3"/-->
-  <!--include file="$(find i3e-d3_description)/launch/description.launch" >
-    <arg name="robot_namespace" default="$(arg robot_namespace)"/>
-  </include-->
-  <param name="robot_description" command="$(find xacro)/xacro $(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro"/>
 
   <!-- Load controller configuration -->
   <rosparam command="load" file="$(find i3e-d3_control)/config/control.yaml"/>

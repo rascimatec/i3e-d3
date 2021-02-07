@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-
-    <node pkg="i3e-d3_tests" type="circles" name="move_circles" output="screen"/>
-
-</launch>
