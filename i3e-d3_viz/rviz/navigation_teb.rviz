@@ -12,6 +12,7 @@ Panels:
         - /Mapping1
         - /Planning1
         - /Planning1/Global Plan1/Status1
+        - /MarkerArray1/Status1
       Splitter Ratio: 0.4522612988948822
     Tree Height: 387
   - Class: rviz/Selection
@@ -75,6 +76,7 @@ Visualization Manager:
           Local Costmap: true
           Map: true
           Value: true
+        MarkerArray: true
         Planning:
           Global Plan: true
           Local Plan: true
@@ -412,6 +414,14 @@ Visualization Manager:
           Value: true
       Enabled: true
       Name: Planning
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /explore/frontiers
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -440,7 +450,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.8861329555511475
+      Distance: 24.86283302307129
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -448,17 +458,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 5.019187927246094
-        Y: -3.050708055496216
-        Z: 4.35979700088501
+        X: 1.3188786506652832
+        Y: -0.06286950409412384
+        Z: 3.185539484024048
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6347963213920593
+      Pitch: 0.669796347618103
       Target Frame: <Fixed Frame>
-      Yaw: 5.659952163696289
+      Yaw: 0.031765952706336975
     Saved: ~
 Window Geometry:
   Camera:
