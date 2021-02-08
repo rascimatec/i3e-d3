@@ -14,7 +14,7 @@ TebLocalPlannerROS:
     
  # Robot
          
- max_vel_x: 1.2
+ max_vel_x: 1.0
  max_vel_x_backwards: 0.8
  max_vel_theta: 0.8
  acc_lim_x: 0.6
