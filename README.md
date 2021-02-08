@@ -1,5 +1,6 @@
 # I3E-D3
-A project of a openSource robotic plataform with a manipulator, developed by the IEEE RAS CIMATEC Student Chapter
+A project of a openSource robotic plataform with a manipulator, 
+developed by the IEEE RAS CIMATEC Student Chapter.
 
 ## Install the packages
 - First, create a ROS workspace:
@@ -16,7 +17,6 @@ $ git clone https://github.com/rascimatec/i3e-d3
 $ cd ~/i3e-d3_ws
 $ rosdep install --from-paths src --ignore-src --rosdistro=noetic -y
 $ catkin_make
->>>>>>> Stashed changes
 ```
 
 ## Package contents

@@ -20,7 +20,6 @@
   <depend>joint_state_controller</depend>
   <depend>joint_trajectory_controller</depend>
   <depend>diff_drive_controller</depend>
-  <!--depend>multimaster_launch</!depend-->
   <depend>robot_localization</depend>
   <depend>rostopic</depend>
   <depend>roscpp</depend>

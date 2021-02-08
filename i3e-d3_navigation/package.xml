@@ -15,6 +15,7 @@
   <build_depend>roslaunch</build_depend>
   <depend>amcl</depend>
   <depend>gmapping</depend>
+  <depend>hector_mapping</depend>
   <depend>map_server</depend>
   <depend>move_base</depend>
   <depend>navfn</depend>
