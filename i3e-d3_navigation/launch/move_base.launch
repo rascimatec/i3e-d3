@@ -1,7 +1,4 @@
 <launch>
-
-   <!--- Run AMCL -->
-  <include file="$(find amcl)/examples/amcl_diff.launch" />
   
   <!-- Run Move Base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
@@ -21,13 +18,5 @@
     <remap from="odom" to="odometry/filtered" />
     <remap from="map" to="/map" />
   </node>
-
-    <rosparam param="move_base/global_costmap/obstacles_layer/scan/sensor_frame" subst_value="True">$(arg tf_prefix)/3irobotix_lidar</rosparam>
-    <rosparam param="move_base/global_costmap/global_frame" subst_value="True">$(arg tf_prefix)/odom</rosparam>
-    <rosparam param="move_base/global_costmap/robot_base_frame" subst_value="True">$(arg tf_prefix)/base_footprint</rosparam>
-
-    <rosparam param="move_base/local_costmap/obstacles_layer/scan/sensor_frame" subst_value="True">$(arg tf_prefix)/3irobotix_lidar</rosparam>
-    <rosparam param="move_base/local_costmap/global_frame" subst_value="True">$(arg tf_prefix)/odom</rosparam>
-    <rosparam param="move_base/local_costmap/robot_base_frame" subst_value="True">$(arg tf_prefix)/base_footprint</rosparam>
 
 </launch>

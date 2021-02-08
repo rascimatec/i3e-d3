@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="tf_prefix" default="i3e_d3"/>
-    <arg name="robot_name" default="$(arg tf_prefix)"/>
+    <arg name="robot_name" default="i3e_d3"/>
     <arg name="init_pose" default="-x 0 -y 0 -z 0.3"/>
     
     <node name="i3e_d3_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
@@ -9,8 +8,6 @@
                                 -model $(arg robot_name)" />
           
     <!-- Include control launch -->
-    <include file="$(find i3e-d3_control)/launch/start_control.launch">
-        <arg name="tf_prefix" value="$(arg tf_prefix)"/>
-    </include>
+    <include file="$(find i3e-d3_control)/launch/start_control.launch"/>
 
 </launch>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find i3e-d3_gazebo)/launch/i3e-d3_playpen.launch"/>
+
+  <include file="$(find i3e-d3_launchs)/launch/main.launch">
+    <arg name="use_rviz" value="true"/>
+    <arg name="rviz_config" value="$(find i3e-d3_viz)/rviz/i3e_d3.rviz"/>
+    <arg name="use_teleoperation" value="true"/>
+    <arg name="teleop" value="joy"/>
+    <arg name="use_slam" value="true"/>
+    <arg name="slam_type" value="hector_slam"/>
+  </include>
+
+</launch>

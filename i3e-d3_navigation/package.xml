@@ -21,6 +21,7 @@
   <depend>base_local_planner</depend>
   <depend>dwa_local_planner</depend>
   <depend>teb_local_planner</depend>
+  <depend>explore_lite</depend>
   
   <export>
   </export>

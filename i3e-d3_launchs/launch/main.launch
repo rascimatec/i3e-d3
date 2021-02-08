@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="use_map" default="false"/>
+  <arg name="map_file" default="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/>
+  <arg name="use_rviz" default="false"/>
+  <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/navigation_teb.rviz"/>
+  <arg name="use_teleoperation" default="false"/>
+  <arg name="teleop" default="joy"/>
+  <arg name="use_amcl" default="false"/>
+  <arg name="use_slam" default="false"/>
+  <arg name="slam_type" default="hector_slam"/>
+  <arg name="use_navigation" default="false"/>
+  <arg name="planner" default="teb_planner"/>
+  <arg name="use_exploration" default="false"/>
+
+  <!-- Load Robot Description -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'"/>
+  
+  <!-- Spawn I3E-D3 -->
+  <include file="$(find i3e-d3_description)/launch/spawn_i3e-d3.launch"/>
+  
+  <!-- Run the map server -->
+  <group if="$(arg use_map)">
+    <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)"/>
+  </group>
+
+  <!-- Run AMCL -->
+  <group if="$(arg use_amcl)">
+    <include file="$(find i3e-d3_navigation)/launch/amcl.launch"/>
+  </group>
+
+  <!-- Run Teleoperation -->
+  <group if="$(arg use_teleoperation)">      
+    <group if="$(eval teleop == 'joy')">
+      <include file="$(find i3e-d3_control)/launch/start_joy_control.launch"/>
+    </group>
+  </group>
+
+  <!-- Run SLAM -->
+  <group if="$(arg use_slam)">
+    <group if="$(eval slam_type == 'gmapping')">
+      <include file="$(find i3e-d3_navigation)/launch/gmapping.launch"/>
+    </group>
+    <group if="$(eval slam_type == 'hector_slam')">
+      <include file="$(find i3e-d3_navigation)/launch/hector_mapping.launch"/>
+    </group>
+  </group>
+  
+  <!-- Run Move Base -->
+  <group if="$(arg use_navigation)">
+    <group if="$(eval planner == 'teb_planner')">
+      <include file="$(find i3e-d3_navigation)/launch/teb_planner.launch"/>
+    </group>
+  </group>
+
+  <!-- Run Exploration -->
+  <group if="$(arg use_exploration)">
+    <include file="$(find i3e-d3_navigation)/launch/explore.launch"/>
+  </group>
+ 
+  <!-- Run the Rviz -->
+  <group if="$(arg use_rviz)">
+    <include file="$(find i3e-d3_viz)/launch/view_robot.launch">
+      <arg name="rviz_config" value="$(arg rviz_config)"/>
+    </include>
+  </group>
+
+</launch>

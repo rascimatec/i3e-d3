@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>i3e-d3_robots</name>
+  <name>i3e-d3_launchs</name>
   <version>1.0.0</version>
-  <description>The i3e-d3 useful package</description>
+  <description>The i3e-d3 useful launchs package</description>
 
   <author email="felipemohr@ieee.org">Felipe Mohr</author>
   <maintainer email="felipemohr@ieee.org">Felipe Mohr</maintainer>

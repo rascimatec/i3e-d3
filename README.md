@@ -14,7 +14,7 @@ git clone https://github.com/rascimatec/i3e-d3
 - Install all dependencies and build your workspace:
 ```bash
 cd ~/i3e-d3_ws
-rosdep install --from-paths src --ignore-src --rosdistro=melodic -y
+rosdep install --from-paths src --ignore-src --rosdistro=noetic -y
 catkin_make
 ```
 
@@ -30,7 +30,7 @@ roslaunch i3e-d3_gazebo i3e-d3_jackal_world.launch
 ```
 - In the second terminal:
 ```bash
-roslaunch i3e-d3_robots robots.launch
+roslaunch i3e-d3_launchs exploration.launch
 ```
 
 #### * This repository has not yet been finished. Not all features will be working correctly
