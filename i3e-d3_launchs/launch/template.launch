@@ -3,7 +3,7 @@
 
   <include file="$(find i3e-d3_launchs)/launch/main.launch">
     <arg name="use_rviz" value="true"/> <!-- true / false -->
-    <arg name="rviz_config" value="$(find i3e-d3_viz)/rviz/navigation_teb.rviz"/> <!-- choose a config -->
+    <arg name="rviz_config" value="$(find i3e-d3_viz)/rviz/i3e_d3.rviz"/> <!-- choose a config -->
     <arg name="use_map" value="false"/> <!-- true / false -->
     <arg name="map_file" value="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/> <!-- choose a map -->
     <arg name="use_teleoperation" value="false"/> <!-- true / false -->

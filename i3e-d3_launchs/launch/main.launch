@@ -17,9 +17,6 @@
   <!-- Load Robot Description -->
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'"/>
   
-  <!-- Load Gazebo -->
-  <include file="$(find i3e-d3_gazebo)/launch/i3e-d3_playpen.launch"/>
-
   <!-- Spawn I3E-D3 -->
   <include file="$(find i3e-d3_description)/launch/spawn_i3e-d3.launch"/>
   

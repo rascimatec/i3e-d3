@@ -1,24 +1,18 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="map_file" default="$(find i3e-d3_navigation)/maps/jackal_race.yaml"/>
-  <arg name="rviz_config" default="$(find i3e-d3_viz)/rviz/navigation_teb.rviz"/>
+  <include file="$(find i3e-d3_gazebo)/launch/i3e-d3_playpen.launch"/>
 
-  <!--param name="robot_description" command="$(find xacro)/xacro $(find i3e-d3_manipulation_description)/urdf/i3e-d3_manipulation_robot.urdf.xacro"/-->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'"/>
-
-  <!-- Run the map server -->
-  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)"/>
-
-  <!-- Run I3E-D3 functionalities -->
-  <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch"/>
-  <include file="$(find i3e-d3_navigation)/launch/amcl.launch"/>
-  <include file="$(find i3e-d3_navigation)/launch/teb_planner.launch"/>
-  <!--include file="$(find i3e-d3_manipulation_control)/launch/open_manipulator_control_gui.launch"/-->
-
-  <!-- Run the Rviz -->
-  <include file="$(find i3e-d3_viz)/launch/view_robot.launch">
-    <arg name="rviz_config" value="$(arg rviz_config)"/>
+  <include file="$(find i3e-d3_launchs)/launch/main.launch">
+    <arg name="use_rviz" value="true"/>
+    <arg name="rviz_config" value="$(find i3e-d3_viz)/rviz/navigation_teb.rviz"/>
+    <arg name="use_map" value="true"/>
+    <arg name="map_file" value="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/>
+    <arg name="use_amcl" value="true"/>
+    <arg name="use_slam" value="true"/>
+    <arg name="slam_type" value="hector_slam"/>
+    <arg name="use_navigation" value="true"/>
+    <arg name="planner" value="teb_planner"/>
   </include>
 
 </launch>
