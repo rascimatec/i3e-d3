@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <launch>
 
-  <include file="$(find i3e-d3_gazebo)/launch/i3e-d3_playpen.launch"/>
+  <include file="$(find i3e-d3_gazebo)/launch/i3e-d3_jackal_world.launch"/>
 
   <include file="$(find i3e-d3_launchs)/launch/main.launch">
     <arg name="use_rviz" value="true"/>
     <arg name="rviz_config" value="$(find i3e-d3_viz)/rviz/navigation_teb.rviz"/>
     <arg name="use_map" value="true"/>
-    <arg name="map_file" value="$(find i3e-d3_navigation)/maps/playpen_map.yaml"/>
+    <arg name="map_file" value="$(find i3e-d3_navigation)/maps/jackal_race.yaml"/>
     <arg name="use_amcl" value="true"/>
     <arg name="use_navigation" value="true"/>
     <arg name="planner" value="teb_planner"/>
