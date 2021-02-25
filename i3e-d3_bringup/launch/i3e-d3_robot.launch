@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <arg name="serial_baud" default="115200"/>
+  <arg name="serial_port" default="/dev/ttyUSB0"/>
+  <arg name="lidar_port" default="/dev/ttyUSB1"/>
+  <arg name="lidar_frame_id" default="3irobotix_lidar"/>
+  <arg name="camera_frame_id" default="camera_link"/>
+  <arg name="imu_frame_id" default="imu_link"/>
+  
+  
+  <!-- ROBOT DESCRIPTION -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'"/>
+
+  <!-- CORE -->
+  <include file="$(find i3e-d3_bringup)/launch/i3e-d3_core.launch">
+    <arg name="port" value="$(arg serial_port)"/>
+    <arg name="baud" value="$(arg serial_baud)"/>
+  </include>
+
+  <!-- CONTROL -->
+  <include file="$(find i3e-d3_control)/launch/start_control.launch"/>
+
+  <!-- LIDAR -->
+  <include file="$(find i3e-d3_bringup)/launch/i3e-d3_core.launch">
+    <arg name="frame_id" value="$(arg lidar_frame_id"/>
+    <arg name="serial_port" value="$(arg lidar_port)"/>
+  </include>
+
+  <!-- IMU -->
+
+
+  <!-- CAMERA -->
+  <!--include file="$(find i3e-d3_bringup)/launch/i3e-d3_rpicamera.launch">
+    <arg name="frame_id" value="camera_link"/>
+  </include-->
+
+
+</launch>

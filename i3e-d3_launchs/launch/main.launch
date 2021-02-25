@@ -18,7 +18,7 @@
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro'"/>
   
   <!-- Spawn I3E-D3 -->
-  <include file="$(find i3e-d3_description)/launch/spawn_i3e-d3.launch"/>
+  <include file="$(find i3e-d3_gazebo)/launch/spawn_i3e-d3.launch"/>
   
   <!-- Run the map server -->
   <group if="$(arg use_map)">
