@@ -1,6 +1,7 @@
-The MIT License (MIT)
+/* ============================================
+MIT License
 
-Copyright (c) 2016 Mat Kelcey
+//  Copyright (c) 2020 Mateus Meneses
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +20,26 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+===============================================
+*/
+
+#include <ros/ros.h>
+#include <exception>
+#include "mpu6050_driver/mpu6050_calibration_node.hpp"
+
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "mpu6050_calibration_node");
+  ros::NodeHandle nh;
+
+  mpu6050_driver::MPU6050CalibrationNode mpu_calibration_node;
+
+  try {
+    mpu_calibration_node.init();
+    mpu_calibration_node.run();
+  } catch (std::runtime_error error) {
+    ROS_FATAL("%s", error.what());
+    ros::shutdown();
+  }
+
+  return 0;
+}
