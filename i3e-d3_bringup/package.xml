@@ -13,17 +13,22 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roslaunch</build_depend>
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>diagnostic_msgs</depend>
+  <!--depend>raspicam_node</depend-->
   <depend>delta_lidar</depend>
   <depend>i2c_device_ros</depend>
   <depend>mpu6050_driver</depend>
   <depend>imu_filter_madgwick</depend>
   <depend>rosserial_python</depend>
-  <depend>i3e-d3_control</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>robot_state_publisher</depend>
   <depend>i3e-d3_description</depend>
-  <depend>i3e-d3_gazebo</depend>
-  <depend>i3e-d3_navigation</depend>
-  <depend>i3e-d3_viz</depend>
-
+  <depend>i3e-d3_control</depend>
+  
   <export>
   </export>
+
 </package>
