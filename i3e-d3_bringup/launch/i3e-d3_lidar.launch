@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   
-  <arg name="frame_id" default="3irobotix_lidar"/>
+  <arg name="frame_id" default="lidar"/>
   <arg name="serial_port" default="/dev/ttyUSB0"/>
 
   <node pkg="delta_lidar" type="delta_lidar_node" name="i3e_d3_lidar" output="screen">

@@ -22,7 +22,10 @@ $ catkin_make
 ```
 
 ## Package contents
-- **3irobotics-delta2a-sdk:** LIDAR SDK package, cloned from https://github.com/biomchen/3irobotics-delta2a-sdk
+- **delta_lidar:** LIDAR SDK package, cloned from https://github.com/biomchen/3irobotics-delta2a-sdk
+- **i2c_device_ros:** I2C interface for ROS, cloned from https://github.com/Brazilian-Institute-of-Robotics/i2c_device_ros
+- **mpu6050_driver:** Driver for use MPU6050 IMU, cloned from https://github.com/Brazilian-Institute-of-Robotics/mpu6050_driver
+- **i3e-d3_bringup:** Package for starting the I3E-D3 robot
 - **i3e-d3_control:** Control and teleoperation of the robot
 - **i3e-d3_description:** I3E-D3 description, URDF and mesh files
 - **i3e-d3_gazebo:** Gazebo worlds for simulation

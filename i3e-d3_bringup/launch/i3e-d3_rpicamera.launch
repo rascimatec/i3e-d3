@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="frame_id" default="camera_link"/>
+  <arg name="frame_id" default="camera"/>
 
   <node pkg="raspicam_node" type="raspicam_node" name="raspicam_node" output="screen">
     <param name="camera_info_url" value="package://i3e-d3_bringup/config/i3e-d3_rpicamera.yaml"/>

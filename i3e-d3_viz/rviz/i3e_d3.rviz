@@ -58,7 +58,7 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
-        3irobotix_lidar:
+        lidar:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -77,7 +77,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        camera_link:
+        camera:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -112,7 +112,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        imu_link:
+        imu:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -170,14 +170,14 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        3irobotix_lidar:
+        lidar:
           Value: true
         All Enabled: false
         base_footprint:
           Value: true
         base_link:
           Value: true
-        camera_link:
+        camera:
           Value: true
         display_link:
           Value: true
@@ -191,7 +191,7 @@ Visualization Manager:
           Value: true
         head_cover_link:
           Value: true
-        imu_link:
+        imu:
           Value: true
         inertial_link:
           Value: true
@@ -226,7 +226,7 @@ Visualization Manager:
           {}
         odom:
           base_link:
-            3irobotix_lidar:
+            lidar:
               {}
             base_footprint:
               {}
@@ -234,7 +234,7 @@ Visualization Manager:
               front_caster_rotate_link:
                 front_caster_wheel_link:
                   {}
-            imu_link:
+            imu:
               {}
             inertial_link:
               {}
@@ -244,7 +244,7 @@ Visualization Manager:
               neck_link:
                 motor_head_link:
                   face_link:
-                    camera_link:
+                    camera:
                       {}
                     display_link:
                       {}

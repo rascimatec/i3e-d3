@@ -7,7 +7,7 @@
   
   <!-- 3irobotix LIDAR -->
   <xacro:macro name="i3e-d3_lidar" params="*joint_pose">
-    <link name="3irobotix_lidar">
+    <link name="lidar">
       <inertial>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <mass value="0.185"/>
@@ -30,14 +30,14 @@
 
     <joint name="lidar_joint" type="fixed">
       <parent link="base_link"/>
-      <child link="3irobotix_lidar"/>
+      <child link="lidar"/>
       <xacro:insert_block name="joint_pose"/>
     </joint>
 
-    <gazebo reference="3irobotix_lidar"><material>Gazebo/Black</material></gazebo>
+    <gazebo reference="lidar"><material>Gazebo/Black</material></gazebo>
 
       <!-- Laser Plugin -->
-    <gazebo reference="3irobotix_lidar">
+    <gazebo reference="lidar">
       <sensor type="ray" name="lidar_sensor">
         <pose>0 0 0 0 0 0</pose>
         <visualize>false</visualize>
@@ -69,7 +69,7 @@
         <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
           <!--robotNamespace>$(arg robot_namespace)</robotNamespace-->
           <topicName>laser/scan</topicName>
-          <frameName>3irobotix_lidar</frameName>
+          <frameName>lidar</frameName>
         </plugin>
       </sensor>
     </gazebo>
@@ -77,7 +77,7 @@
 
   <!-- Camera -->
   <xacro:macro name="i3e-d3_camera" params="*joint_pose">
-    <link name="camera_link">
+    <link name="camera">
       <inertial>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <mass value="3.3e-3"/>
@@ -93,12 +93,12 @@
 
     <joint name="camera_joint" type="fixed">
       <parent link="face_link"/>
-      <child link="camera_link"/>
+      <child link="camera"/>
       <xacro:insert_block name="joint_pose"/>
     </joint>    
 
     <!-- Camera Plugin -->
-    <gazebo reference="camera_link">
+    <gazebo reference="camera">
       <sensor type="camera" name="camera">
         <update_rate>30.0</update_rate>
         <camera name="head">
@@ -129,7 +129,7 @@
           <cameraName>camera</cameraName>
           <imageTopicName>image_raw</imageTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-          <frameName>camera_link</frameName>
+          <frameName>camera</frameName>
           <hackBaseline>0.07</hackBaseline>
           <distortionK1>0.0</distortionK1>
           <distortionK2>0.0</distortionK2>
@@ -144,16 +144,16 @@
 
   <!-- IMU -->
   <xacro:macro name="i3e-d3_imu" params="*joint_pose">
-    <link name="imu_link"/>
+    <link name="imu"/>
 
     <joint name="imu_joint" type="fixed">
       <parent link="base_link"/>
-      <child link="imu_link"/>
+      <child link="imu_"/>
       <xacro:insert_block name="joint_pose"/>
     </joint>
       
       <!-- IMU plugin -->
-      <gazebo reference="imu_link">
+      <gazebo reference="imu">
         <gravity>true</gravity>
         <sensor name="imu_sensor" type="imu">
           <always_on>true</always_on>
@@ -162,13 +162,13 @@
           <topic>__default_topic__</topic>
           <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
             <!--robotNamespace>$(arg robot_namespace)</robotNamespace-->
-            <topicName>imu/data</topicName>
-            <bodyName>imu_link</bodyName>
+            <topicName>imu/data/filtered</topicName>
+            <bodyName>imu</bodyName>
             <updateRateHZ>10.0</updateRateHZ>
             <gaussianNoise>0.0</gaussianNoise>
             <xyzOffset>0 0 0</xyzOffset>
             <rpyOffset>0 0 0</rpyOffset>
-            <frameName>imu_link</frameName>
+            <frameName>imu</frameName>
             <initialOrientationAsReference>false</initialOrientationAsReference>
           </plugin>
           <pose>0 0 0 0 0 0</pose>

@@ -60,7 +60,7 @@
     <material>Gazebo/DarkGray</material>
   </gazebo>
   
-  <gazebo reference="camera_link">
+  <gazebo reference="camera">
     <material>Gazebo/Green</material>
   </gazebo>
 
