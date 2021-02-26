@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>i3e-d3_bringup</name>
+  <version>1.0.0</version>
+  <description>The i3e-d3 bringup package</description>
+
+  <author email="felipemohr@ieee.org">Felipe Mohr</author>
+  <maintainer email="felipemohr@ieee.org">Felipe Mohr</maintainer>
+
+  <license>MIT</license>
+
+  <url type="repository">https://github.com/rascimatec/i3e-d3</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>diagnostic_msgs</depend>
+  <!--depend>raspicam_node</depend-->
+  <depend>delta_lidar</depend>
+  <depend>i2c_device_ros</depend>
+  <depend>mpu6050_driver</depend>
+  <depend>imu_filter_madgwick</depend>
+  <depend>rosserial_python</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>i3e-d3_description</depend>
+  <depend>i3e-d3_control</depend>
+  
+  <export>
+  </export>
+
+</package>

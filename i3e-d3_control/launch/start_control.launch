@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <launch>
 
-  <!-- Load robot description -->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find i3e-d3_description)/urdf/i3e-d3.urdf.xacro"/>
-
   <!-- Load controller configuration -->
   <rosparam command="load" file="$(find i3e-d3_control)/config/control.yaml"/>
 

@@ -98,7 +98,7 @@ Visualization Manager:
           Collision Enabled: false
           Enabled: true
           Links:
-            3irobotix_lidar:
+            lidar:
               Alpha: 1
               Show Axes: false
               Show Trail: false
@@ -117,7 +117,7 @@ Visualization Manager:
               Show Axes: false
               Show Trail: false
               Value: true
-            camera_link:
+            camera_:
               Alpha: 1
               Show Axes: false
               Show Trail: false
@@ -152,7 +152,7 @@ Visualization Manager:
               Show Axes: false
               Show Trail: false
               Value: true
-            imu_link:
+            imu:
               Alpha: 1
               Show Axes: false
               Show Trail: false
