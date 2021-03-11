@@ -4,7 +4,7 @@
   <!-- Load controller configuration -->
   <rosparam command="load" file="$(find i3e-d3_control)/config/control.yaml"/>
 
-  <!-- Spawn controllers -->
+  <!-- Spawn controllers 3-->
   <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
         args="velocity_controller joint_publisher joint_neck_position joint_head_position"/>
 

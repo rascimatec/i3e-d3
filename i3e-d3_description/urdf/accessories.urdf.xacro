@@ -148,7 +148,7 @@
 
     <joint name="imu_joint" type="fixed">
       <parent link="base_link"/>
-      <child link="imu_"/>
+      <child link="imu"/>
       <xacro:insert_block name="joint_pose"/>
     </joint>
       
