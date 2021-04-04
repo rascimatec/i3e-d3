@@ -59,7 +59,7 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
-        3irobotix_lidar:
+        lidar:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -93,7 +93,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        camera_link:
+        camera:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -128,7 +128,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        imu_link:
+        imu:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -163,7 +163,7 @@ Visualization Manager:
           Value: true
       Name: RobotModel
       Robot Description: robot_description
-      TF Prefix: i3e_d3
+      TF Prefix: ""
       Update Interval: 0
       Value: true
       Visual Enabled: true
@@ -172,7 +172,7 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        i3e_d3/3irobotix_lidar:
+        i3e_d3/lidar:
           Value: true
         i3e_d3/back_caster_base:
           Value: true
@@ -184,7 +184,7 @@ Visualization Manager:
           Value: true
         i3e_d3/base_link:
           Value: true
-        i3e_d3/camera_link:
+        i3e_d3/camera:
           Value: true
         i3e_d3/display_link:
           Value: true
@@ -198,7 +198,7 @@ Visualization Manager:
           Value: true
         i3e_d3/head_cover_link:
           Value: true
-        i3e_d3/imu_link:
+        i3e_d3/imu:
           Value: true
         i3e_d3/inertial_link:
           Value: true
@@ -222,7 +222,7 @@ Visualization Manager:
       Tree:
         i3e_d3/odom:
           i3e_d3/base_link:
-            i3e_d3/3irobotix_lidar:
+            i3e_d3/lidar:
               {}
             i3e_d3/back_caster_base:
               i3e_d3/back_caster_wheel_support:
@@ -234,7 +234,7 @@ Visualization Manager:
               i3e_d3/front_caster_wheel_support:
                 i3e_d3/front_caster_wheel:
                   {}
-            i3e_d3/imu_link:
+            i3e_d3/imu:
               {}
             i3e_d3/inertial_link:
               {}
@@ -244,7 +244,7 @@ Visualization Manager:
               i3e_d3/neck_link:
                 i3e_d3/motor_head_link:
                   i3e_d3/face_link:
-                    i3e_d3/camera_link:
+                    i3e_d3/camera:
                       {}
                     i3e_d3/display_link:
                       {}

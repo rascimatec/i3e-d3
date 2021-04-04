@@ -1,14 +1,14 @@
 Panels:
   - Class: rviz/Displays
-    Help Height: 78
+    Help Height: 0
     Name: Displays
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /TF1/Frames1
+        - /Status1
         - /Odometry1/Shape1
       Splitter Ratio: 0.5
-    Tree Height: 314
+    Tree Height: 397
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -27,7 +27,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: Camera
+    SyncSource: LaserScan
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -54,6 +54,211 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
     - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        lidar:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        display_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        face_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_caster_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_caster_rotate_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_caster_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        head_cover_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        imu:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        inertial_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        motor_head_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        motor_neck_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        neck_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rear_caster_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rear_caster_rotate_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rear_caster_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+      Name: RobotModel
+      Robot Description: robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        lidar:
+          Value: true
+        All Enabled: false
+        base_footprint:
+          Value: true
+        base_link:
+          Value: true
+        camera:
+          Value: true
+        display_link:
+          Value: true
+        face_link:
+          Value: true
+        front_caster_base_link:
+          Value: true
+        front_caster_rotate_link:
+          Value: true
+        front_caster_wheel_link:
+          Value: true
+        head_cover_link:
+          Value: true
+        imu:
+          Value: true
+        inertial_link:
+          Value: true
+        left_wheel_link:
+          Value: true
+        map:
+          Value: true
+        motor_head_link:
+          Value: true
+        motor_neck_link:
+          Value: true
+        neck_link:
+          Value: true
+        odom:
+          Value: true
+        rear_caster_base_link:
+          Value: true
+        rear_caster_rotate_link:
+          Value: true
+        rear_caster_wheel_link:
+          Value: true
+        right_wheel_link:
+          Value: true
+      Marker Alpha: 1
+      Marker Scale: 0.4000000059604645
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        map:
+          {}
+        odom:
+          base_link:
+            lidar:
+              {}
+            base_footprint:
+              {}
+            front_caster_base_link:
+              front_caster_rotate_link:
+                front_caster_wheel_link:
+                  {}
+            imu:
+              {}
+            inertial_link:
+              {}
+            left_wheel_link:
+              {}
+            motor_neck_link:
+              neck_link:
+                motor_head_link:
+                  face_link:
+                    camera:
+                      {}
+                    display_link:
+                      {}
+                    head_cover_link:
+                      {}
+            rear_caster_base_link:
+              rear_caster_rotate_link:
+                rear_caster_wheel_link:
+                  {}
+            right_wheel_link:
+              {}
+      Update Interval: 0
+      Value: true
+    - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
         Max Value: 10
@@ -78,231 +283,10 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Flat Squares
-      Topic: /i3e_d3/laser/scan
+      Topic: /laser/scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true
-    - Class: rviz/Camera
-      Enabled: true
-      Image Rendering: background and overlay
-      Image Topic: /i3e_d3/camera/image_raw
-      Name: Camera
-      Overlay Alpha: 0.5
-      Queue Size: 2
-      Transport Hint: raw
-      Unreliable: false
-      Value: true
-      Visibility:
-        Grid: true
-        LaserScan: true
-        Odometry: true
-        PoseArray: true
-        RobotModel: true
-        TF: true
-        Value: true
-      Zoom Factor: 1
-    - Alpha: 1
-      Class: rviz/RobotModel
-      Collision Enabled: false
-      Enabled: true
-      Links:
-        3irobotix_lidar:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        All Links Enabled: true
-        Expand Joint Details: false
-        Expand Link Details: false
-        Expand Tree: false
-        Link Tree Style: Links in Alphabetic Order
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        caster:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        display_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        end_effector_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        gripper_link_sub:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        imu_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        inertial_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        left_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        link5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        neck:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-      Name: RobotModel
-      Robot Description: robot_description
-      TF Prefix: i3e_d3
-      Update Interval: 0
-      Value: true
-      Visual Enabled: true
-    - Class: rviz/TF
-      Enabled: true
-      Frame Timeout: 15
-      Frames:
-        All Enabled: false
-        i3e_d3/3irobotix_lidar:
-          Value: true
-        i3e_d3/base_footprint:
-          Value: true
-        i3e_d3/base_link:
-          Value: true
-        i3e_d3/camera_link:
-          Value: true
-        i3e_d3/caster:
-          Value: true
-        i3e_d3/display_link:
-          Value: true
-        i3e_d3/end_effector_link:
-          Value: true
-        i3e_d3/gripper_link:
-          Value: true
-        i3e_d3/gripper_link_sub:
-          Value: true
-        i3e_d3/head:
-          Value: true
-        i3e_d3/imu_link:
-          Value: true
-        i3e_d3/inertial_link:
-          Value: true
-        i3e_d3/left_wheel_link:
-          Value: true
-        i3e_d3/link1:
-          Value: true
-        i3e_d3/link2:
-          Value: true
-        i3e_d3/link3:
-          Value: true
-        i3e_d3/link4:
-          Value: true
-        i3e_d3/link5:
-          Value: true
-        i3e_d3/neck:
-          Value: true
-        i3e_d3/odom:
-          Value: true
-        i3e_d3/right_wheel_link:
-          Value: true
-      Marker Scale: 0.4000000059604645
-      Name: TF
-      Show Arrows: true
-      Show Axes: true
-      Show Names: true
-      Tree:
-        i3e_d3/odom:
-          i3e_d3/base_link:
-            i3e_d3/3irobotix_lidar:
-              {}
-            i3e_d3/base_footprint:
-              {}
-            i3e_d3/camera_link:
-              {}
-            i3e_d3/caster:
-              {}
-            i3e_d3/head:
-              i3e_d3/display_link:
-                {}
-            i3e_d3/imu_link:
-              {}
-            i3e_d3/inertial_link:
-              {}
-            i3e_d3/left_wheel_link:
-              {}
-            i3e_d3/link1:
-              i3e_d3/link2:
-                i3e_d3/link3:
-                  i3e_d3/link4:
-                    i3e_d3/link5:
-                      i3e_d3/end_effector_link:
-                        {}
-                      i3e_d3/gripper_link:
-                        {}
-                      i3e_d3/gripper_link_sub:
-                        {}
-            i3e_d3/neck:
-              {}
-            i3e_d3/right_wheel_link:
-              {}
-      Update Interval: 0
       Value: true
     - Angle Tolerance: 0.10000000149011612
       Class: rviz/Odometry
@@ -321,10 +305,11 @@ Visualization Manager:
           Scale: 1
           Value: true
         Value: false
-      Enabled: false
+      Enabled: true
       Keep: 100
       Name: Odometry
       Position Tolerance: 0.10000000149011612
+      Queue Size: 10
       Shape:
         Alpha: 0.6000000238418579
         Axes Length: 1
@@ -335,30 +320,61 @@ Visualization Manager:
         Shaft Length: 0.4000000059604645
         Shaft Radius: 0.029999999329447746
         Value: Arrow
-      Topic: /i3e_d3_velocity_controller/odom
+      Topic: /odometry/filtered
       Unreliable: false
-      Value: false
+      Value: true
     - Alpha: 1
       Arrow Length: 0.30000001192092896
       Axes Length: 0.30000001192092896
       Axes Radius: 0.009999999776482582
       Class: rviz/PoseArray
       Color: 255; 25; 0
-      Enabled: true
+      Enabled: false
       Head Length: 0.07000000029802322
       Head Radius: 0.029999999329447746
       Name: PoseArray
+      Queue Size: 10
       Shaft Length: 0.23000000417232513
       Shaft Radius: 0.009999999776482582
       Shape: Arrow (Flat)
       Topic: /particlecloud
       Unreliable: false
+      Value: false
+    - Class: rviz/Camera
+      Enabled: true
+      Image Rendering: background and overlay
+      Image Topic: /camera/image_raw
+      Name: Camera
+      Overlay Alpha: 0.5
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+      Visibility:
+        Grid: true
+        LaserScan: true
+        Map: true
+        Odometry: true
+        PoseArray: true
+        RobotModel: true
+        TF: true
+        Value: true
+      Zoom Factor: 1
+    - Alpha: 0.699999988079071
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
+      Use Timestamp: false
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: i3e_d3/odom
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -382,35 +398,35 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.2899372577667236
+      Distance: 7.884699821472168
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
+      Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.8586465120315552
-        Y: -1.730609655380249
-        Z: 0.6042707562446594
+        X: 0.2742329239845276
+        Y: -0.14297263324260712
+        Z: 1.0877851247787476
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.43479642271995544
+      Pitch: 0.44479629397392273
       Target Frame: <Fixed Frame>
-      Value: Orbit (rviz)
-      Yaw: 4.23814058303833
+      Yaw: 4.593141555786133
     Saved: ~
 Window Geometry:
   Camera:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 1025
+  Height: 987
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd0000000400000000000001d200000363fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000001c5000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d0065007200610100000208000001980000001600ffffff000000010000010f00000346fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000346000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000003efc0100000002fb0000000800540069006d0065010000000000000780000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000005a80000036300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000400000000000001d20000033dfc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000001ca000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d006500720061010000020d0000016d0000001600ffffff000000010000010f00000346fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000346000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004d00000003efc0100000002fb0000000800540069006d00650100000000000004d0000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000002f80000033d00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -419,6 +435,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 1920
-  X: 1366
-  Y: 27
+  Width: 1232
+  X: 48
+  Y: 0

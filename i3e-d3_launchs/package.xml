@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>i3e-d3_launchs</name>
+  <version>1.0.0</version>
+  <description>The i3e-d3 useful launchs package</description>
+
+  <author email="felipemohr@ieee.org">Felipe Mohr</author>
+  <maintainer email="felipemohr@ieee.org">Felipe Mohr</maintainer>
+
+  <license>MIT</license>
+
+  <url type="repository">https://github.com/rascimatec/i3e-d3</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <depend>i3e-d3_control</depend>
+  <depend>i3e-d3_description</depend>
+  <depend>i3e-d3_gazebo</depend>
+  <depend>i3e-d3_navigation</depend>
+  <depend>i3e-d3_viz</depend>
+
+  <export>
+  </export>
+</package>

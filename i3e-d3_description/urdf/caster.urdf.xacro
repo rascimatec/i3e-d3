@@ -16,7 +16,7 @@
 					<mesh filename="package://i3e-d3_description/meshes/caster_base.stl" scale="1 1 1"/> 
 				</geometry>
 
-				<material name="Grey"/>
+				<material name="gray"/>
 			</visual>
 
 			<collision>
@@ -59,7 +59,7 @@
 					<mesh filename="package://i3e-d3_description/meshes/caster_rot.stl" scale="1 1 1"/> 
 				</geometry>
 
-				<material name="Grey"/>
+				<material name="gray"/>
 			</visual>
 			
 			<collision>
@@ -100,7 +100,7 @@
 					<sphere radius="${35/2000}"/>				
 				</geometry>
 				
-				<material name="Yellow"/>
+				<material name="yellow"/>
 			</visual>
 			
 			<collision>
