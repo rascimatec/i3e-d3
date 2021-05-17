@@ -70,6 +70,165 @@
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </joint>
 
+    <!-- I3E-D3 Arm -->
+    <link name="left_arm">
+        <inertial>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <mass value="0.05"/>
+            <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/arm.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/arm.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="right_arm">
+        <inertial>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <mass value="0.05"/>
+            <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/arm.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/arm.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="left_arm_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="left_arm"/>
+        <origin xyz="0.0 0.18 -0.03" rpy="0.0 0.0 0.0"/>
+    </joint>
+    
+    <joint name="right_arm_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="right_arm"/>
+        <origin xyz="0.0 -0.20 -0.03" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+
+    <link name="left_forearm">
+        <inertial>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <mass value="0.05"/>
+            <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/forearm.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/forearm.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="right_forearm">
+        <inertial>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <mass value="0.05"/>
+            <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/forearm.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/forearm.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="left_forearm_joint" type="fixed">
+        <parent link="left_arm"/>
+        <child link="left_forearm"/>
+        <origin xyz="0.0 0.0 0.08" rpy="0.0 ${PI} 0.0"/>
+    </joint>
+    
+    <joint name="right_forearm_joint" type="fixed">
+        <parent link="right_arm"/>
+        <child link="right_forearm"/>
+        <origin xyz="0.0 0.0 0.08" rpy="0.0 ${PI} 0.0"/>
+    </joint>
+
+
+    <link name="left_hand">
+        <inertial>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <mass value="0.05"/>
+            <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/hand.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/hand.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="right_hand">
+        <inertial>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <mass value="0.05"/>
+            <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/hand.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.04 0.0 0.0" rpy="0.0 ${-PI/2} ${PI/6}"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/hand.stl" scale="1e-3 1e-3 1e-3"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="left_hand_joint" type="fixed">
+        <parent link="left_forearm"/>
+        <child link="left_hand"/>
+        <origin xyz="0.0 -0.022 0.04" rpy="${-PI/2} 0.0 ${PI/16}"/>
+    </joint>
+    
+    <joint name="right_hand_joint" type="fixed">
+        <parent link="right_forearm"/>
+        <child link="right_hand"/>
+        <origin xyz="0.0 -0.028 0.04" rpy="${-PI/2} 0.0 ${-PI/24}"/>
+    </joint>
+
     <!-- I3E-D3 head and neck -->
     <xacro:i3e-d3_head/>
 

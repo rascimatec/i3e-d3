@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>i3e_d3_msgs</name>
+  <version>1.0.0</version>
+  <description>The i3e-d3 messages and services package</description>
+
+  <author email="felipemohr@ieee.org">Felipe Mohr</author>
+  <maintainer email="felipemohr@ieee.org">Felipe Mohr</maintainer>
+
+  <license>MIT</license>
+
+  <url type="repository">https://github.com/rascimatec/i3e-d3</url>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>  
+  <exec_depend>message_runtime</exec_depend>
+  <depend>std_msgs</depend>
+
+  <export>
+  </export>
+</package>
