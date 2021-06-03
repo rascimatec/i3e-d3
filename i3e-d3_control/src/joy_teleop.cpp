@@ -76,11 +76,11 @@ TeleopD3::TeleopD3(): linear_(1), angular_(0){
     rev_ = true;
     locked_ = true;
 
-    vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
+    vel_pub_ = nh_.advertise<geometry_msgs::Twist>("joy_teleop/cmd_vel", 1);
     joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 10, &TeleopD3::joyCallback, this);
     
-    //head_joint_pub_ = nh_.advertise<std_msgs::Float64>("joint_head_position/command", 1);
-    //neck_joint_pub_ = nh_.advertise<std_msgs::Float64>("joint_neck_position/command", 1);
+    head_joint_pub_ = nh_.advertise<std_msgs::Float64>("joint_head_position/command", 1);
+    neck_joint_pub_ = nh_.advertise<std_msgs::Float64>("joint_neck_position/command", 1);
 
 }
 
@@ -108,8 +108,8 @@ void TeleopD3::joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
 
 void TeleopD3::moveD3(){    
     vel_pub_.publish(twist_);
-    //neck_joint_pub_.publish(neck_cmd_);
-    //head_joint_pub_.publish(head_cmd_);
+    neck_joint_pub_.publish(neck_cmd_);
+    head_joint_pub_.publish(head_cmd_);
 }
 
 

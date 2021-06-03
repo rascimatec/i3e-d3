@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="i3e-d3_head" xmlns:xacro="http://www.ros.org/wiki/xacro">
   
-  <xacro:macro name="i3e-d3_head">
+  <xacro:macro name="i3e-d3_head" params="*joint_pose">
 
     <xacro:macro name="TransmissionServo" params="joint n">
         <transmission name="tran_${n}">
@@ -43,7 +43,7 @@
     <joint name="motor_neck_joint" type="fixed">
         <parent link="base_link"/>
         <child link="motor_neck_link"/>
-        <origin xyz="0.005 0.0 ${base_height/2}" rpy="0.0 0.0 0.0"/>
+        <xacro:insert_block name="joint_pose"/>
     </joint>
 
     <link name="neck_link">
