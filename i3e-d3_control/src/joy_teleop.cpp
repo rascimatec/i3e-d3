@@ -100,7 +100,7 @@ void TeleopD3::joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
     twist_.angular.z = k_*a_scale_*joy->axes[angular_];
 
     if(!locked_) {
-        neck_cmd_.data = 1.5707*joy->axes[neck_];
+        neck_cmd_.data = 1.5707/2*joy->axes[neck_];
         head_cmd_.data = 0.5235*joy->axes[head_];
     }
 
@@ -118,7 +118,7 @@ int main(int argc, char *argv[]){
     ros::init(argc, argv, "/teleop_i3e_d3");
     TeleopD3 teleop_d3;
 
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(20);
     while (ros::ok()){
         teleop_d3.moveD3();
 

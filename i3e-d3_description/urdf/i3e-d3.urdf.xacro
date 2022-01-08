@@ -12,10 +12,11 @@
     <xacro:include filename="$(find i3e-d3_description)/urdf/caster.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/accessories.urdf.xacro"/>
     <xacro:include filename="$(find i3e-d3_description)/urdf/head.urdf.xacro"/>
+    <xacro:include filename="$(find i3e-d3_description)/urdf/arm.urdf.xacro"/>
     
     <!-- Base, head and neck sizes -->
     <xacro:property name="base_radius" value="0.155"/>
-    <xacro:property name="base_height" value="0.342"/>
+    <xacro:property name="base_height" value="0.34568"/>
     
     <xacro:property name="base_weight" value="0.515"/>   
 
@@ -25,19 +26,18 @@
     <!-- Wheel Mounting Positions -->
     <xacro:property name="wheel_x_offset" value="0"/>
     <xacro:property name="wheel_y_offset" value="${wheel_length/2 + base_radius + 0.005}"/>
-    <xacro:property name="wheel_z_offset" value="${-base_height/2 + 0.05}"/>
+    <xacro:property name="wheel_z_offset" value="0.0312"/>
 
     <!-- Base link is the center of the robot -->
     <link name="base_link">
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <cylinder radius="${base_radius}" length="${base_height}"/>
+                <mesh filename="package://i3e-d3_description/meshes/base_link.dae"/>
             </geometry>
-            <material name="blue"/>"
         </visual>
         <collision> 
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 ${base_height/2 - 0.0007}" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <cylinder radius="${base_radius}" length="${base_height}"/>
             </geometry>
@@ -70,8 +70,19 @@
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </joint>
 
+    
+    <!-- I3E-D3 arms, forearms and hands -->
+    <xacro:i3e-d3_arm prefix="left">
+        <origin xyz="0.0 0.100 0.294" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_arm>
+    <xacro:i3e-d3_arm prefix="right">
+        <origin xyz="0.0 -0.100 0.294" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_arm>
+
     <!-- I3E-D3 head and neck -->
-    <xacro:i3e-d3_head/>
+    <xacro:i3e-d3_head>
+        <origin xyz="-0.01 0.0 ${base_height - 0.0014}" rpy="0.0 0.0 0.0"/>
+    </xacro:i3e-d3_head>
 
     <!-- I3E-D3 wheel macros -->
     <xacro:i3e-d3_wheel prefix="left">
@@ -86,7 +97,7 @@
 						 radius="0.025" 
 						 x="${2*base_radius/3}" 
 						 y="0.0" 
-						 z="${-base_height/2 + 0.008}" 
+						 z="-0.01" 
 						 roll="0.0"
 						 pitch="0.0" 
 						 yaw="0.0" 
@@ -99,7 +110,7 @@
 						 radius="0.025" 
 						 x="${-2*base_radius/3}" 
 						 y="0.0" 
-						 z="${-base_height/2 + 0.008}" 
+						 z="-0.01" 
 						 roll="0.0" 
 						 pitch="0.0" 
 						 yaw="0.0" 
@@ -111,27 +122,19 @@
     <!-- Sensors -->
     <xacro:i3e-d3_camera>
       <origin xyz="0.026 0.004 0.05" rpy="0.0 0.0 0.0"/>
-
     </xacro:i3e-d3_camera>
     <xacro:i3e-d3_lidar>
-        <origin xyz="${base_radius/2} 0.0 ${base_height/2 + 0.025}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="${base_radius/2 - 0.012} 0.0 ${base_height - 0.0014 + 0.036 + 0.024 - 0.01}" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_lidar>
     <xacro:i3e-d3_imu>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </xacro:i3e-d3_imu>
 
 
-    <!-- Gazebo ROS Control Plugin -->
-    <!--gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <robotNamespace>$(arg robot_namespace)</robotNamespace>
-            <legacyModeNS>true</legacyModeNS>
-        </plugin>
-    </gazebo-->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <!--robotNamespace>$(arg robot_namespace)</robotNamespace-->
-      <controlPeriod>0.001</controlPeriod>
+      <controlPeriod>0.002</controlPeriod>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
       <legacyModeNS>true</legacyModeNS>
     </plugin>

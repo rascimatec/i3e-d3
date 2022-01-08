@@ -23,10 +23,6 @@
   <material name="white">
     <color rgba="1.0 1.0 1.0 1.0"/>
   </material>
-    
-  <gazebo reference="base_link">
-    <material>Gazebo/Blue</material>
-  </gazebo>
 
   <gazebo reference="neck_link">
     <material>Gazebo/White</material>

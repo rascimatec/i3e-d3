@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot name="i3e-d3_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:macro name="i3e-d3_arm" params="prefix *joint_pose">
+
+    <link name="${prefix}_arm">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/${prefix}_arm.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://i3e-d3_description/meshes/${prefix}_arm.dae"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.8"/>
+            <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
+        </inertial>
+    </link>
+
+    <joint name="${prefix}_arm_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="${prefix}_arm"/>
+        <xacro:insert_block name="joint_pose"/>
+    </joint>
+
+  </xacro:macro>
+
+</robot>
