@@ -10,7 +10,7 @@ $ mkdir -p ~/i3e-d3_ws/src
 ```
 - Clone this repository inside your /src folder:
 ```bash
-$ cd i3e-d3_ws/src
+$ cd ~/i3e-d3_ws/src
 $ git clone git@github.com:rascimatec/i3e-d3.git
 ```
 - Install all dependencies and build your workspace:
