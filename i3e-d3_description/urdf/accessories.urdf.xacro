@@ -14,14 +14,14 @@
         <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-6"/>
       </inertial>
       <visual>
-        <origin xyz="0.0 0.0 -0.024" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.0 0.0 -0.02" rpy="0.0 0.0 0.0"/>
         <geometry>
           <mesh filename="package://i3e-d3_description/meshes/lidar.stl"/>
         </geometry>
         <material name="black"/>
       </visual>
       <collision>
-        <origin xyz="0.0 0.0 -0.024" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.0 0.0 -0.02" rpy="0.0 0.0 0.0"/>
         <geometry>
           <mesh filename="package://i3e-d3_description/meshes/lidar.stl"/>
         </geometry>
@@ -40,7 +40,7 @@
     <gazebo reference="lidar">
       <sensor type="ray" name="lidar_sensor">
         <pose>0 0 0 0 0 0</pose>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <update_rate>40</update_rate>
         <ray>
           <scan>
