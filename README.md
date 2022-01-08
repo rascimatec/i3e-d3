@@ -1,6 +1,5 @@
 # I3E-D3
-A project of a openSource robotic plataform with a manipulator, 
-developed by the IEEE RAS CIMATEC Student Chapter.
+A project of a openSource robotic plataform, developed by the IEEE RAS CIMATEC Student Chapter.
 
 ![d3](images/d3.png)
 
@@ -124,5 +123,3 @@ You can run *map_saver* to save the map:
 ```bash
 $ rosrun map_server map_saver -f <filename>
 ``` 
-
-#### * This repository has not yet been finished. Not all features will be working correctly
